@@ -1,0 +1,39 @@
+generated: '2026-07-18'
+method: searched
+source: https://developers.crossbeam.com/
+docs:
+  - https://developers.crossbeam.com/
+  - https://help.crossbeam.com/en/articles/4677142-rest-api
+  - https://gitlab.com/crossbeam-public/crossbeam-simple-oauth2
+summary:
+  types: [oauth2]
+  oauth2_flows: [authorizationCode]
+  api_key_in: []
+  note: >-
+    Public Crossbeam Partner API uses standard OAuth 2.0 (three-legged, authorization-code).
+    Credentials are created as a Custom Integration app in the Crossbeam UI
+    (https://app.crossbeam.com/integrations), which issues a Client ID and Client Secret.
+    Positioned for Enterprise customers.
+schemes:
+  - name: OAuth2
+    type: oauth2
+    flow: authorizationCode
+    authorizationUrl: https://auth.crossbeam.com/authorize?audience=https://api.getcrossbeam.com
+    tokenUrl: https://auth.crossbeam.com/oauth/token
+    audience: https://api.getcrossbeam.com
+    access_token_lifetime: 24h
+    refresh: >-
+      Request the offline_access scope to receive a refresh token; exchange it at the token
+      URL with grant_type=refresh_token for long-running integrations.
+    sources: [docs]
+required_headers:
+  - name: Authorization
+    value: 'Bearer <access_token>'
+    required: true
+  - name: Xbeam-Organization
+    value: '<organization-uuid>'
+    required: true
+    note: >-
+      Selects which organization's data to return (a user may belong to multiple orgs).
+      Obtain the uuid from GET /v0.1/users/me. Omitting this header is the most common
+      cause of 4xx errors.
