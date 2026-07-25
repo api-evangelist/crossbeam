@@ -1,8 +1,26 @@
 aid: crossbeam
 name: Crossbeam
-description: Crossbeam is a company surfaced as a portfolio company of a16z, redpoint-ventures, uncork-capital
-  and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the
-  enrichment pipeline.
+description: >-
+  Crossbeam is the leading Ecosystem-Led Growth (ELG) platform: a secure data-collaboration
+  network that lets companies compare CRM data with their partners to uncover shared customers,
+  overlapping prospects, and co-selling opportunities without exposing sensitive records. It
+  turns partner-sourced overlaps, populations, and real-time signals into "Ecosystem
+  Intelligence" that flows into GTM tools and AI agents. Crossbeam exposes this data through a
+  REST Partner API (OAuth 2.0), real-time Signals webhooks, a remote MCP server, and in-app AI
+  Chat, backed by SOC 2 Type II, GDPR, CCPA, and PCI DSS compliance.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.prod.website-files.com/66955639e4d4a6eebd7168b9/67659cb901d6d8f4eb2bd567_crossbeam_opengraph.avif
 url: https://raw.githubusercontent.com/api-evangelist/crossbeam/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,19 +28,116 @@ x-backed-by:
 - a16z
 - redpoint-ventures
 - uncork-capital
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
-apis: []
+- Ecosystem-Led Growth
+- Partnerships
+- Account Mapping
+- Co-Selling
+- Data Collaboration
+- Sales Intelligence
+- CRM
+- Webhooks
+- MCP
+apis:
+- name: Crossbeam Partner API
+  description: >-
+    Read (and timeline-write) access to Crossbeam Ecosystem Intelligence — partners,
+    populations, reports/overlaps, and real-time signals — via a versioned REST API secured
+    with OAuth 2.0. Requires an Authorization bearer token plus an Xbeam-Organization header.
+  humanURL: https://developers.crossbeam.com/
+  baseURL: https://api.crossbeam.com
+  tags:
+  - Partnerships
+  - Ecosystem Intelligence
+  - REST
+  - OAuth
+  properties:
+  - type: Authentication
+    url: authentication/crossbeam-authentication.yml
+  - type: OAuthScopes
+    url: scopes/crossbeam-scopes.yml
+  - type: Conventions
+    url: conventions/crossbeam-conventions.yml
+  - type: Webhooks
+    url: asyncapi/crossbeam-signals-webhooks.yml
+  - type: DataModel
+    url: data-model/crossbeam-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/crossbeam-lifecycle.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: TrustCenter
+  url: security/crossbeam-trust-center.yml
+- type: DomainSecurity
+  url: security/crossbeam-domain-security.yml
 - type: Website
   url: http://www.crossbeam.com/
+- type: DeveloperPortal
+  url: https://developers.crossbeam.com/
+- type: Documentation
+  url: https://developers.crossbeam.com/
+- type: APIReference
+  url: https://developers.crossbeam.com/
+- type: GettingStarted
+  url: https://help.crossbeam.com/en/articles/4677142-rest-api
+- type: HelpCenter
+  url: https://help.crossbeam.com/en/
+- type: Support
+  url: https://help.crossbeam.com/en/
+- type: Blog
+  url: https://www.crossbeam.com/resources/news
+- type: ChangeLog
+  url: https://www.crossbeam.com/resources/product-updates
+- type: GitHubOrganization
+  url: https://github.com/getcrossbeam
+- type: Pricing
+  url: https://www.crossbeam.com/pricing
+- type: SignUp
+  url: https://app.crossbeam.com/register
+- type: Login
+  url: https://app.crossbeam.com/login
+- type: TermsOfService
+  url: https://www.crossbeam.com/legal
+- type: PrivacyPolicy
+  url: https://www.crossbeam.com/legal/crossbeam-privacy-policy
+- type: StatusPage
+  url: https://status.crossbeam.com/
+- type: Authentication
+  url: authentication/crossbeam-authentication.yml
+- type: OAuthScopes
+  url: scopes/crossbeam-scopes.yml
+- type: Conventions
+  url: conventions/crossbeam-conventions.yml
+- type: Webhooks
+  url: asyncapi/crossbeam-signals-webhooks.yml
+- type: MCPServer
+  url: mcp/crossbeam-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/crossbeam-llms.txt
+- type: Conformance
+  url: conformance/crossbeam-conformance.yml
+- type: Compliance
+  url: https://security.crossbeam.com/
+- type: DataModel
+  url: data-model/crossbeam-data-model.yml
+- type: Lifecycle
+  url: lifecycle/crossbeam-lifecycle.yml
+- type: ChangeLog
+  url: changelog/crossbeam-changelog.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

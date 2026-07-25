@@ -1,0 +1,32 @@
+generated: '2026-07-18'
+method: searched
+source: https://developers.crossbeam.com/
+docs: https://developers.crossbeam.com/
+note: >-
+  Crossbeam Partner API OAuth 2.0 scopes. Each endpoint's per-endpoint doc page states the
+  scope it requires. Request `openid` at minimum plus the scope(s) for the endpoints you need.
+schemes:
+  - name: OAuth2
+    flow: authorizationCode
+    authorizationUrl: https://auth.crossbeam.com/authorize?audience=https://api.getcrossbeam.com
+    tokenUrl: https://auth.crossbeam.com/oauth/token
+scopes:
+  - scope: openid
+    description: Required baseline scope for all tokens.
+    flows: [authorizationCode]
+  - scope: read:partnerships
+    description: Read partner data (e.g. GET /v1/partners — coverage, partner records).
+    flows: [authorizationCode]
+  - scope: read:reports
+    description: Read report data (overlap / account-mapping results).
+    flows: [authorizationCode]
+  - scope: read:populations
+    description: Read your populations.
+    flows: [authorizationCode]
+  - scope: write:activity-timeline
+    description: Write activity onto the Crossbeam timeline. The only write path in the public API.
+    flows: [authorizationCode]
+  - scope: offline_access
+    description: Issues a refresh token, needed for long-running apps (24h access-token lifetime).
+    flows: [authorizationCode]
+example_scope_string: openid read:partnerships offline_access

@@ -1,0 +1,41 @@
+generated: '2026-07-18'
+method: searched
+source: https://developers.crossbeam.com/
+docs:
+  - https://developers.crossbeam.com/
+  - https://help.crossbeam.com/en/articles/4677142-rest-api
+authentication:
+  style: oauth2
+  ref: authentication/crossbeam-authentication.yml
+  required_headers:
+    - 'Authorization: Bearer <access_token>'
+    - 'Xbeam-Organization: <organization-uuid>'
+versioning:
+  scheme: uri-path
+  observed_versions: [v0.1, v1]
+  note: >-
+    Endpoints are versioned in the URI path. Both v0.1 (e.g. /v0.1/users/me) and
+    v1 (e.g. /v1/partners, /v1/signals/*) paths are in use.
+  ref: lifecycle/crossbeam-lifecycle.yml
+rate_limiting:
+  note: >-
+    Rate limits are defined in Crossbeam's security policy and are subject to change at
+    Crossbeam's discretion. API reads and webhook deliveries count toward Record Export
+    limits, so integrations should filter server-side and avoid redundant polling.
+idempotency:
+  api_write_key: false
+  note: >-
+    The public REST API does not document an idempotency-key header for writes. Idempotency
+    guidance applies to the webhook consumer side: handlers must be idempotent because
+    Crossbeam retries deliveries and a signal can arrive more than once.
+  ref: asyncapi/crossbeam-signals-webhooks.yml
+error_envelope:
+  format: http-status
+  note: >-
+    Standard HTTP status codes. Most 4xx errors on the REST API stem from a missing
+    Xbeam-Organization header. Webhook receivers should return 2xx quickly.
+  ref: errors
+tooling:
+  postman: >-
+    A "Run in Postman" button on the developer docs clones the Crossbeam collection and
+    environment; use the desktop Postman app.

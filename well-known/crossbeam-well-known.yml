@@ -1,0 +1,19 @@
+generated: '2026-07-18'
+method: searched
+note: >-
+  Probed the standard /.well-known/ discovery surface on the API and website hosts. None
+  returned 200; recorded here as honest negative results. No WellKnown/SecurityTxt pointer
+  is emitted because no document was found.
+hosts:
+  - host: https://api.crossbeam.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+  - host: https://www.crossbeam.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+  - host: https://developers.crossbeam.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}

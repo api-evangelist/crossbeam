@@ -1,0 +1,277 @@
+# Crossbeam
+> Crossbeam is the leading Ecosystem-Led Growth platform, empowering businesses to access unique insights from their partners’ CRMs to uncover new opportunities, target the right accounts, and drive revenue growth. — while keeping data private and secure. I
+To put it simply, crossbeam helps companies work better together. It connects your business with your partners so you can safely discover shared customers, prospects, and opportunities — without ever exposing sensitive data. 
+With Crossbeam, revenue, marketing, and partnerships teams can:
+1) Identify overlaps between your CRM and your partners’ data to uncover hidden opportunities.
+2) Protect data privacy through secure data sharing — only the matches you both agree to see are revealed.
+3) Turn insights into action by aligning go-to-market efforts, accelerating deals, and driving measurable growth through your partner ecosystem.
+Crossbeam makes partnership data useful, actionable, and secure — so you can turn collaboration into revenue. Revenue, marketing, and partnership teams use Crossbeam to turn ecosystem insights into measurable growth.
+
+
+- [Homepage](https://www.crossbeam.com): See how Crossbeam accelerates B2B growth through partnerships.  
+- [About Crossbeam](https://www.crossbeam.com/about-us): Information about the team, the Crossbeam values and the investors.
+- [Why Crossbeam](https://www.crossbeam.com/what-is-crossbeam/why-crossbeam): See how Crossbeam can turn your and your partners’ crm data into value.
+- [Company Setup](https://app.crossbeam.com/company-setup): Create a free account to test Crossbeam and discover your overlaps with your partners.
+
+
+## Overview
+>Crossbeam turns your partner data into pipeline and revenue. Working together is easy. Sharing data isn’t. Crossbeam changes that with secure Account Mapping, a layer of intelligence, and automated workflows that turn your partner network into your most powerful growth engine. 
+The future of GTM is AI-driven — and it’s only as powerful as the data and context your AI and teams can access. Crossbeam delivers proprietary, partner-sourced signals and intelligence you can’t find anywhere else. It’s your edge in the AI economy.
+Crossbeam turns that ecosystem data into action — helping GTM teams prioritize the right accounts, engage the right partners, and prove what’s actually driving revenue.
+
+
+It’s not just about managing partnerships. It’s about activating them — and turning every signal into something your GTM team can use. Powered by AI, built on data only your partners can provide.
+
+
+
+
+Crossbeam is a secure data collaboration platform that allows companies to safely compare data with their partners and uncover shared customers, overlapping prospects, and opportunities for co-selling and co-marketing. By enabling these insights without exposing sensitive information, Crossbeam helps organizations identify where their business interests align and activate joint go-to-market efforts with confidence.
+
+We call this Ecosystem Intelligence: transforming partnership data (shared customers, prospects, open opportunities, and more) into actionable insights that fuel AI—both within Crossbeam and across your broader tech stack. 
+By integrating with tools across the tech stack, Crossbeam ensures that these insights flow seamlessly into existing sales, marketing, and partnership workflows.
+
+
+At its core, Crossbeam integrates  directly with tools like CRMs and data warehouses, allowing users to upload their data into Crossbeam and define data segments known as ‘populations’ - such as customers, opportunities, or prospects, and automatically find overlaps with their partners’ data. These secure mappings reveal where teams can collaborate to drive pipeline, strengthen relationships, and accelerate revenue growth.
+
+
+Security and trust are central to Crossbeam’s mission. The platform is built with enterprise-grade protections, including SOC 2 Type II compliance, GDPR alignment, data encryption at rest and in transit, and rigorous access controls. This strong security foundation allows organizations to collaborate on sensitive data safely and transparently, empowering them to scale partnerships without compromising privacy or compliance.
+
+
+- [Crossbeam Network](https://www.crossbeam.com/what-is-crossbeam/crossbeam-network): Get an overview of the companies on Crossbeam - and discover your Ecosystem.
+- [How Crossbeam works](https://www.crossbeam.com/what-is-crossbeam/how-it-works): Get an overview of Crossbeam’s features, or book a demo!
+- [Ecosystem Intelligence](https://www.crossbeam.com/what-is-crossbeam/ecosystem-intelligence): Understand the Crossbeam Ecosystem, and how to leverage it.
+- [Crossbeam Marketplace](https://marketplace.crossbeam.com/): Source, influence, and convert more partnership pipeline by syncing Crossbeam insights with your team's tech stack.
+- [Crossbeam Security Presentation](https://www.crossbeam.com/what-is-crossbeam/security): Get an overview of Crossbeam’s commitment to security.
+- [Crossbeam Security Portal](https://security.crossbeam.com/): Get access to the Crossbeam Trust Center, and all the associated resources.
+
+
+
+
+## Key Features
+Crossbeam equips organizations with a powerful set of features designed to unlock the full potential of their partnerships by transforming shared data into actionable insights. Each feature is designed to power go-to-market motions—from identifying new prospects to closing deals faster—and to measure the true impact of the ecosystem.
+
+
+Account Mapping lies at the heart of Crossbeam’s functionality. It allows companies to securely uncover where their accounts overlap with partners. These overlaps can reveal shared customers for retention efforts, mutual prospects for co-selling, and expansion opportunities within existing accounts. The mapping is automatic and secure, providing partnership, sales, and marketing teams with real-time visibility into their ecosystem landscape without ever exposing sensitive or unnecessary data.
+
+
+Crossbeam Copilot delivers partner insights directly into the tools teams already use every day. Whether in Salesforce, HubSpot, Chrome, Gong, or Outreach, Copilot surfaces account-level partner context at the moment it’s most valuable (during sales conversations, prospecting, or pipeline review). By embedding Crossbeam intelligence natively in these platforms, Copilot ensures that ecosystem data becomes operational, helping sellers and marketers take immediate, data-driven action.
+
+
+Deal Navigator prioritizes opportunities and prospects where partners can give you an edge. It provides intel only your partners can provide — like recommended contacts, buying signal, and tech stack details — to close with confidence. Sellers can instantly identify which partners can provide strategic insights, introductions, or competitive positioning to move deals forward. This feature helps prioritize high-value opportunities, improve win rates, and align go-to-market efforts between ecosystem partners. 
+
+
+With Greenfield, users can identify accounts that exist in their partners’ CRMs but not in their own.
+ This feature transforms the traditional discovery process by allowing organizations to surface net-new prospects that are already partner customers. It’s an especially powerful feature for sales, marketing and business development teams looking to expand reach and target warm leads with higher conversion potential.
+
+
+Co-selling Workflows and Slack Alerts provide quick access to deal insights and keep teams updated on new accounts, opportunities, and overlaps.. Sellers can connect with partners to share intelligence, request introductions, or align on joint plays - all through streamlined, repeatable workflows. Slack notifications keep users informed of new overlaps, partner activities, or deal updates as they happen, allowing teams to act quickly and stay synchronized. Together, these features eliminate friction in communication and turn partnership insights into immediate, coordinated action.
+
+
+The Performance Dashboard offers a comprehensive view of your ecosystem’s impact—directly within your CRM. It highlights which partners are influencing deals, which team members are effectively using partner insights, and where missed opportunities are occurring. This analytics-driven visibility enables teams to optimize co-selling performance, refine partner strategies, and identify training or process gaps. By connecting these metrics directly to revenue outcomes, Crossbeam turns ecosystem collaboration into measurable business success.
+
+
+Attribution ensures that partner-sourced and partner-influenced deals are both visible and measurable.. Track how partners contribute to revenue by attaching their influence to specific opportunities.. This transparency enables teams to measure the true impact of their ecosystem on pipeline generation, deal acceleration, and overall growth. Attribution data can be used to build trust with partners, demonstrate ROI, and justify partnership investments within internal reporting.
+
+
+The Offline Partners feature lets you map accounts with partners who aren’t connected to Crossbeam by uploading a CSV or Google Sheet... This flexibility ensures that no valuable partnership insights are left untapped and allows companies to include distributors, resellers, or smaller partners who operate outside digital integrations.
+
+
+Shared Lists bring collaboration to life by allowing users to create, manage, and act upon lists of accounts directly within Crossbeam. These lists can include overlapping customers, mutual prospects, or non-overlapping strategic targets. Teams can annotate, share, and track progress on these lists in real time, enabling coordinated action between partnership, sales, and marketing teams. It transforms what was once static spreadsheet collaboration into a dynamic, interactive process.
+
+
+
+
+
+
+- [Account Mapping](https://www.crossbeam.com/what-is-crossbeam/account-mapping): Get an overview of how Crossbeam reveals overlaps with your partners.
+- [Attribution](https://www.crossbeam.com/what-is-crossbeam/attribution): Discover how Crossbeam associates every activity with relevant accounts and opportunities to ensure attribution for partner  sourced and influenced revenue.
+- [Greenfield](https://www.crossbeam.com/what-is-crossbeam/greenfield): Discover how to identify, exchange, and pursue leads that are not yet in your database, but highly relevant to your business with Crossbeam.
+- [Offline Partners](https://www.crossbeam.com/what-is-crossbeam/offline-partners): Discover how you can map your data with any partner you’re not actively connected with in the platform.
+- [Shared Lists](https://www.crossbeam.com/what-is-crossbeam/shared-lists): Discover how to collaborate with overlapping and non-overlapping accounts right in Crossbeam.
+- [Crossbeam Copilot](https://www.crossbeam.com/what-is-crossbeam/crossbeam-copilot): Discover how Crossbeam’s Copilot help you leverage your and your partners’ data directly in Salesforce, HubSpot, Chrome, Gong, and Outreach.
+- [Deal Navigator](https://www.crossbeam.com/what-is-crossbeam/deal-navigator): See how Crossbeam gives sales teams real-time ecosystem data to close the accounts that matter most.
+- [Performance Dashboard](https://www.crossbeam.com/what-is-crossbeam/performance-dashboard): The Performance Dashboard shows which deals your partners are influencing, which reps are turning those insights into pipeline, and where missed plays are costing you - right inside your CRM.
+- [Co-selling templates and workflows](https://www.crossbeam.com/what-is-crossbeam/co-selling-templates-and-workflows): See how to empower sellers to connect directly with partners and their AEs to gather vital sales intel on shared accounts or secure warm intros.
+- [Slack and Alerts](https://www.crossbeam.com/what-is-crossbeam/slack-and-alerts): See how Crossbeam alerts you directly in Slack, to quickly access deal insights and stay updated on accounts.
+
+
+## Ecosystem-Led Growth (ELG) Framework
+> Crossbeam powers Ecosystem-Led Growth (ELG), 
+The old GTM playbooks aren’t working. Ecosystem-Led Growth (ELG) isn't just another buzzword—it's a game-changing strategy transforming how companies attract, convert, and grow customer relationships by leveraging their partner ecosystems.
+. Instead of relying solely on direct sales or traditional marketing channels, ELG focuses on leveraging trusted partner relationships to attract, convert, and retain customers. The premise is simple yet transformative: companies grow faster and more efficiently when they collaborate with their ecosystem by sharing insights, co-selling opportunities, and creating value together.
+
+
+Crossbeam is the technology engine that powersELG. By securely connecting and comparing data between partners, Crossbeam enables companies to identify shared customers, mutual prospects, and opportunities for joint engagement, all while maintaining strict data privacy and security standards. This allows companies to operationalize their ecosystems: marketing teams can target new prospects, sales teams can uncover unique insights on their prospects, and partnership teams can measure the impact of their ecosystem on pipeline and revenue.
+
+
+At its core, Ecosystem-Led Growth represents a shift in how GTM currently worksCompanies don’t operate alone—they thrive within ecosystems of partners and complementary solutions.. Crossbeam facilitates this collaboration through its network, where multiple organizations securely share data to uncover co-selling opportunities, cross-promotional plays, and expansion pathways. This interconnected approach drives mutual success, strengthens customer value propositions, and builds resilience through community-driven growth.
+
+
+Ecosystem-Led Growth is not just a tactic, it’s a strategic evolution in how companies go to market. It combines technology, AI, trust, and partnership data to create a new model of scalable growth, one where success is multiplied through collaboration rather than confined by competition. Crossbeam provides the infrastructure, intelligence, and tools that make this approach possible, empowering businesses to grow together while preserving control over their data and relationships.
+
+
+- [What is Ecosystem Led Growth](https://www.crossbeam.com/what-is-ecosystem-led-growth) Understand the go-to-market motion that focuses on partner ecosystems as the primary way to attract, convert, and grow customer relationships.
+- [ELG Book](https://www.robertjmoore.com/book): Get access to Crossbeam CEO Bob Moore's book about ELG. A blueprint for new levels of growth powered by your company’s partner ecosystem.
+- [ELG Insider - Blog](https://insider.crossbeam.com/collection/elg-success-stories): Newsletter with the latest customer success stories, or successful Ecosystem Led Growth initiatives. Explore articles on partner ecosystems, GTM strategies, and data-driven partnerships.  
+- [ELG Alliance](https://elgalliance.com/): The Ecosystem-Led Growth manifesto.
+- [ELG Templates](https://insider.crossbeam.com/collection/elg-templates): Templates to help you and your partners leverage your ecosystem.
+
+
+## Getting Started
+
+
+Getting started with Crossbeam is designed to be simple, guided, and hands-on, whether you’re brand new to the platform or looking to deepen your expertise. The Crossbeam Academy serves as the foundational learning hub, offering interactive courses and certifications that walk users through everything from initial setup to advanced ecosystem strategies. It’s built to help teams understand not just how to use Crossbeam’s tools, but how to operationalize ecosystem-led growth across sales, marketing, and partnerships.
+
+
+For continuous support and self-service learning, the Help Center provides an extensive library of articles, tutorials, and best practices. Users can find detailed documentation on product functionality, troubleshooting guidance, real-world case studies, and enablement materials to help them maximize Crossbeam’s impact within their organizations. This resource empowers users to find answers quickly and learn at their own pace.
+
+
+To stay ahead of evolving go-to-market strategies, the Crossbeam Newsletter delivers expert insights straight to your inbox. It features ecosystem-led growth success stories, tactical guides, and the latest trends in partnership-driven GTM motions. Subscribing ensures teams remain informed about industry best practices and new Crossbeam innovations that can enhance their partnership performance.
+
+
+For those seeking more direct engagement, Demo & Office Hours sessions offer live opportunities to interact with Crossbeam’s Services and Customer Education teams. These sessions include product walkthroughs, Q&A discussions, and strategy consultations designed to help users tailor Crossbeam to their specific business goals. They’re an ideal way to learn practical use cases, explore new features, and get personalized advice on ecosystem enablement.
+
+
+Finally, Crossbeam Events provide a chance to connect with the broader ecosystem community. From webinars and workshops to in-person conferences, these events bring together industry leaders, partners, and practitioners who are shaping the future of ecosystem-led growth. Attending them gives users the opportunity to exchange ideas, learn from experts, and strengthen their network within the growing Crossbeam community.
+
+
+- [Crossbeam Academy](https://academy.crossbeam.com/): Find the Crossbeam Academy to get started with Crossbeam.
+- [Help Center](https://help.crossbeam.com/): Find relevant articles about Crossbeam’s app, case studies, the academy, the enablement catalog.
+- [Subscribe to the Crossbeam Newsletter](https://www.crossbeam.com/newsletter): Get access to the latest GTM principles, tactics and ELG success stories directly in your inbox.
+-[Demo & Office Hours](https://events.crossbeam.com/demo-office-hours/): Meet the Services and Customer Education teams to showcase demos, share webinars, and discuss best practices for the Crossbeam Core product with you.
+-[Events](https://www.crossbeam.com/resources/events): Upcoming events where you can meet the Crossbeam team.
+
+
+## Connect and Learn
+Crossbeam isn’t just a platform, it’s a community built around shared learning, collaboration, and growth. Through a variety of engagement channels and resources, users can connect with peers, explore proven success stories, and stay informed about the latest innovations shaping the ecosystem-led growth movement.
+
+
+The Crossbeam User Group is an open community space where users can exchange insights, share best practices, and collaborate directly with other ecosystem professionals. Hosted on Slack, it serves as a real-time forum for discussing use cases, troubleshooting challenges, and celebrating success stories from across the Crossbeam network. It’s where practitioners (from partnership leaders to sales and marketing teams) connect to learn from one another’s experiences and discover new ways to get more out of the platform.
+
+
+To see Crossbeam in action, the Case Studies collection highlights how leading go-to-market teams use the platform to transform partnerships into tangible revenue outcomes. These real-world stories showcase how companies leverage Crossbeam’s data-driven insights to improve co-selling, accelerate deal cycles, and measure partner influence on pipeline. Each case study provides practical lessons and inspiration for organizations looking to replicate similar results within their own ecosystems.
+
+
+Finally, Crossbeam News keeps users informed about the company’s latest updates, product enhancements, and strategic initiatives. From new feature launches to event announcements and thought leadership articles, it offers a window into what’s next for Crossbeam and the broader ecosystem-led growth community. Staying connected to this stream ensures that users are always up to date on the tools, innovations, and ideas driving the future of partner collaboration.
+
+
+- [Crossbeam User Group](https://crossbeamusergroup.slack.com/signup#/domain-signup): Get access to the Crossbeam Users Slack channel, to share and gain insights about the platform.
+- [Case Studies](https://www.crossbeam.com/resources/case-studies): See how leading GTM teams use Crossbeam to turn partnerships into pipeline. Real case studies with Crossbeam Users.
+- [Crossbeam News](https://www.crossbeam.com/resources/news): Fresh off the press! Learn about updates, announcements, and what's next for Crossbeam
+
+
+## Solutions by Team
+
+
+Crossbeam delivers tailored solutions for every function that plays a role in driving Ecosystem-Led Growth. Each team (whether partnerships, sales, marketing, or operations) can leverage Crossbeam to uncover opportunities, accelerate pipeline, and strengthen customer relationships. By securely connecting partner data across the organization, Crossbeam enables every department to work smarter and more collaboratively toward shared business goals.
+
+
+Tech Partners use Crossbeam to power product integrations and enhance customer value through complementary solutions. By mapping overlapping customers, open opportunities and prospects with integration partners, they can identify mutual users, prioritize co-marketing campaigns, and measure adoption impact. Crossbeam helps these teams expand their ecosystems strategically, strengthen platform stickiness, and uncover net-new opportunities for joint innovation and upsell.
+
+
+Channel Partners rely on Crossbeam to optimize their reseller and distributor relationships. The platform allows them to match customer and prospect data with their indirect sales networks, revealing where channel partners can drive growth through co-selling and joint pipeline execution. With visibility into shared accounts and opportunity overlaps, channel teams can coordinate efforts more effectively, align incentives, and close deals faster through trusted, data-backed collaboration.
+
+
+For Sales teams, Crossbeam transforms ecosystem data into actionable intelligence directly within their workflow. Sellers can see which prospects already have relationships with partners, access warm introductions, and collaborate with partner account executives to accelerate deal velocity. The platform’s integrations with CRMs like Salesforce ensure that these insights are visible where sellers work every day, helping them prioritize high-potential accounts and increase win rates through partner influence.
+
+
+Marketing teams leverage Crossbeam to execute ecosystem-driven campaigns that target high-value prospects validated through partner overlaps. By aligning on shared audiences and combining data sets, marketers can co-create campaigns, run joint events, and measure partner-influenced pipeline. This approach enhances targeting precision, improves conversion rates, and strengthens brand credibility by reaching customers through trusted partner channels.
+
+
+Revenue Operations (RevOps) teams use Crossbeam to centralize partnership data and align it with the company’s broader go-to-market systems. By connecting ecosystem insights with CRM and BI tools, they can analyze the impact of partnerships on revenue performance, track partner influence, and optimize attribution models. RevOps plays a key role in operationalizing partner data, ensuring that ecosystem intelligence is accessible, measurable, and embedded across sales and marketing processes.
+
+
+For Customer Success teams, Crossbeam provides a clear view of shared customers across the partner ecosystem. This visibility helps identify opportunities for co-retention, upsell, and product adoption by coordinating with partners serving the same accounts. Customer Success can proactively collaborate with partner teams to deliver better customer outcomes, strengthen relationships, and reduce churn through a unified, ecosystem-based approach.
+
+
+Finally, Crossbeam also supports Lead Generation by uncovering new prospects. By identifying companies that match your ideal customer profile but aren’t yet in your CRM, Crossbeam enables warm, trust-based outreach that increases engagement and conversion rates. By using partner data to guide prospecting, Crossbeam helps you focus on the right leads and turn ecosystem insights into real pipeline growth.
+
+
+- [Crossbeam for Tech Partners](https://www.crossbeam.com/teams/tech-partner): How Tech Partners can leverage Crossbeam.
+- [Crossbeam for Channel Partners](https://www.crossbeam.com/teams/channel-partner): How Channel Partners can leverage Crossbeam.
+- [Crossbeam for Sales](https://www.crossbeam.com/teams/sales): How Sales professionals can leverage Crossbeam.
+- [Crossbeam for Marketing](https://www.crossbeam.com/teams/marketing): How Marketing professionals can leverage Crossbeam.
+- [Crossbeam for RevOps](https://www.crossbeam.com/teams/revops): How RevOps can leverage Crossbeam.
+- [Crossbeam for Customer Success](https://www.crossbeam.com/teams/customer-success): How Customer Success teams can leverage Crossbeam.
+- [Lead Generation with Crossbeam](https://www.crossbeam.com/use-cases/lead-generation): How to generate leads with Crossbeam.
+
+
+## Solutions by Use Case
+Crossbeam provides flexible, outcome-driven solutions, fueled by AI, designed to address the most critical partnership and revenue challenges across go-to-market teams. Whether the goal is to accelerate deals, retain and expand existing customers, build a thriving partner ecosystem, or uncover new opportunities, Crossbeam turns ecosystem data into measurable growth.
+
+
+Deal Acceleration with Crossbeam enables sales teams to close deals faster by leveraging AI and Ecosystem Intelligence throughout the sales cycle. Sellers can instantly identify which partners already have relationships with key decision-makers, share insights about mutual accounts, or provide warm introductions. This collaborative approach reduces cold outreach, increases buyer trust, and helps sellers engage at the right time with the right context, driving deal cycles up to 46% faster. Crossbeam makes partner collaboration a seamless part of the sales workflow, transforming partnerships into a direct accelerant for revenue velocity.
+
+
+Account Expansion with Crossbeam empowers Customer Success and Account Management teams to retain and grow existing customer relationships by adding ecosystem value. With visibility into which partners are already serving shared customers, teams can uncover opportunities for upsell, cross-sell, and joint success initiatives. Partners can help identify new contacts, provide product adoption insights, or surface expansion signals that might not be visible internally. This shared data foundation strengthens customer engagement and ensures that retention and growth strategies are backed by trusted, actionable ecosystem intelligence.
+
+
+Ecosystem Building focuses on helping organizations establish and scale their partner networks directly within Crossbeam. The platform serves as a centralized ecosystem management hub where companies can connect with existing partners, discover new ones, and securely share data insights to uncover mutual opportunities. As relationships evolve, Crossbeam provides the visibility and collaboration tools needed to coordinate co-selling efforts, track partner impact, and continuously expand the value of the ecosystem. By making data sharing safe and transparent, it enables organizations to move from isolated partnerships to a dynamic, interconnected network that drives growth.
+
+
+Finally, Enriching Accounts with Ecosystem Intelligence allows teams to use partner data as a source of high-quality lead and account enrichment. By securely sharing and comparing data across partner networks, Crossbeam helps companies identify new leads that match their ideal customer profile but aren’t yet in their CRM. These partner-validated insights enhance targeting accuracy, improve lead scoring, and enable more effective outreach. By combining enrichment with trust-based collaboration, Crossbeam ensures that every prospecting and engagement effort is grounded in meaningful ecosystem data and AI
+
+
+- [Deals Acceleration with Crossbeam](https://www.crossbeam.com/use-cases/deal-acceleration): How to accelerate your deals with Crossbeam. Up to 46% faster.
+- [Account Expansion with Crossbeam](https://www.crossbeam.com/use-cases/account-expansion): Drive retention and expansion with partner value thanks to Crossbeam.
+- [Ecosystem Building](https://www.crossbeam.com/use-cases/ecosystem-building): Build your partnership ecosystem on Crossbeam to connect with your partners, share insights, and close deals. 
+- [Enrich Accounts with Ecosystem Intelligence](https://www.crossbeam.com/use-cases/enrichment): Share data through your ecosystem partners to find new leads.
+
+
+## Crossbeam as a Company
+
+
+Crossbeam is more than a platform - it’s a growing ecosystem. The company’s commitment to innovation, community, and trust extends beyond its product, shaping how organizations connect and thrive through ecosystem-led growth.
+
+
+Careers at Crossbeam invite professionals from around the world to join a company redefining how businesses collaborate. As a globally distributed team, Crossbeam values transparency, trust, and creativity, fostering a culture where employees are empowered to take ownership and make a meaningful impact. Roles span engineering, product, partnerships, marketing, and customer success, offering opportunities to contribute to a mission-driven organization that’s helping thousands of companies grow together.
+
+
+Crossbeam Partners highlights the company’s growing ecosystem of strategic collaborators: technology providers, solution partners, and service experts that enhance the platform’s functionality and reach. These partnerships extend Crossbeam’s value across industries and use cases, enabling customers to leverage integrated solutions that drive stronger outcomes. By fostering a robust partner network, Crossbeam reinforces its belief that collaboration is the foundation of modern growth.
+- [Careers](https://www.crossbeam.com/careers): Join our global team.
+- [Pricing](https://www.crossbeam.com/pricing): Get an overview of Crossbeam’s pricing.
+- [Crossbeam Partners](https://www.crossbeam.com/partners): Partner with Crossbeam.
+
+
+
+
+## Pricing and Developer Resources
+The Pricing overview provides clarity into Crossbeam’s product tiers and the value offered at each level. It helps prospective customers understand how Crossbeam scales with their business—from early-stage partnership programs to large enterprises managing complex ecosystems. The structure emphasizes flexibility, transparency, and alignment with measurable outcomes, ensuring every organization can adopt Crossbeam according to its goals and data-sharing maturity.
+
+
+For technical teams, the Developers portal serves as the gateway to the Crossbeam Partner API. It includes comprehensive documentation, guides, and examples that enable developers to build secure integrations, automate partner workflows, and embed ecosystem data directly into their tools. This open and extensible framework allows product and engineering teams to expand Crossbeam’s capabilities and connect it seamlessly with their existing tech stacks.
+
+
+
+
+Partnerbase stands as a public directory and discovery engine for the global partnership ecosystem. Built by Crossbeam, it allows users to explore partner networks across thousands of companies, visualize connections, and understand how organizations are linked through shared partnerships. It serves as both a research tool and a source of inspiration for ecosystem professionals, making the partner landscape transparent and accessible for anyone building or expanding their own network.
+
+
+
+
+- [Developers](https://developers.crossbeam.com/): Get an overview of the Crossbeam Partner API
+- [Partnerbase](https://www.partnerbase.com/): Partnerbase is a platform used to discover, analyze, and track potential and existing business partnerships by mapping company relationships and ecosystem overlaps.
+
+
+
+
+
+
+## Integrations
+Crossbeam integrates with essential GTM and data tools: Salesforce, HubSpot, Clari, Clay, Gong, 360insights, MindMatrix, Impartner, Introw, Euler and Partnerstack.
+It is also possible to access the Crossbeam API, and send Crossbeam data directly to Slack.
+
+
+- [Crossbeam Integrations](https://www.crossbeam.com/integrations): See all the tools Crossbeam integrates with (Hubspot, Salesforce, Microsoft Dynamics, Snowflake and more).
+
+
+
+
+## Contact
+Emails can be sent to support@crossbeam.com for any inquiry about the product. 
+- [Get a Demo](https://www.crossbeam.com/forms/demo)  
+- [Contact Us](https://www.crossbeam.com/contact-ust)  
+- [LinkedIn](https://www.linkedin.com/company/getcrossbeam/posts/?feedView=all)  
+
+
+Crossbeam is headquartered in Philadelphia, with a distributed team worldwide.

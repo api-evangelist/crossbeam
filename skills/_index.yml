@@ -1,0 +1,54 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/getcrossbeam/crossbeam-claude-skills
+note: >-
+  Crossbeam publishes a public bank of Claude Agent Skills (getcrossbeam/crossbeam-claude-skills).
+  The API-grounded routing skill (crossbeam-api-guide) is saved verbatim in this repo as
+  crossbeam-api-guide.md; the remaining skills are GTM/ELG workflow skills indexed here by
+  reference to the provider's repo.
+skills:
+  - file: crossbeam-api-guide.md
+    name: crossbeam-api-guide
+    saved: verbatim
+    api: https://developers.crossbeam.com/
+    operations: [users-me, list-partners, read-populations, read-reports, signals, write-activity-timeline]
+    description: >-
+      Routes any "how do I get Crossbeam data into X" question to the right access method
+      (REST API, Webhooks/Signals, MCP server, or in-app AI Chat) and points to the exact
+      docs, OAuth scopes, and endpoints.
+  - name: crossbeam-co-sell-copilot
+    saved: index-only
+    source: https://github.com/getcrossbeam/crossbeam-claude-skills/tree/main/skills/crossbeam-co-sell-copilot
+    description: Help a rep win/unblock/break into an account by bringing in the right partner; read-only and draft-only.
+  - name: crossbeam-ecosystem-prospecting
+    saved: index-only
+    source: https://github.com/getcrossbeam/crossbeam-claude-skills/tree/main/skills/crossbeam-ecosystem-prospecting
+    description: Turn the partner ecosystem into a ranked, reasoned prospecting list of ecosystem-qualified leads (EQLs).
+  - name: ecosystem-informed-account-brief
+    saved: index-only
+    source: https://github.com/getcrossbeam/crossbeam-claude-skills/tree/main/skills/ecosystem-informed-account-brief
+    description: Produce a structured account brief enriched with Crossbeam ecosystem intelligence and signals via MCP.
+  - name: ecosystem-informed-outreach-writer
+    saved: index-only
+    source: https://github.com/getcrossbeam/crossbeam-claude-skills/tree/main/skills/ecosystem-informed-outreach-writer
+    description: Draft rep-quality outbound emails and 1/3/7-email sequences for any GTM motion.
+  - name: ecosystem-powered-pipeline-prioritization
+    saved: index-only
+    source: https://github.com/getcrossbeam/crossbeam-claude-skills/tree/main/skills/ecosystem-powered-pipeline-prioritization
+    description: Scan accounts for Crossbeam signals and rank by signal strength; optional per-account outreach angle.
+  - name: elg-advisor
+    saved: index-only
+    source: https://github.com/getcrossbeam/crossbeam-claude-skills/tree/main/skills/elg-advisor
+    description: Actionable ecosystem-led-growth (ELG) and partner-strategy recommendations; no account required.
+  - name: linkedin-partner-contact-search
+    saved: index-only
+    source: https://github.com/getcrossbeam/crossbeam-claude-skills/tree/main/skills/linkedin-partner-contact-search
+    description: Find net-new or partner-side contacts on LinkedIn through an ELG lens via public web search.
+  - name: partner-alignment-outreach
+    saved: index-only
+    source: https://github.com/getcrossbeam/crossbeam-claude-skills/tree/main/skills/partner-alignment-outreach
+    description: Turn recent closed-won deals into partner-alignment outreach using Crossbeam MCP overlap data.
+  - name: partner-pitch-builder
+    saved: index-only
+    source: https://github.com/getcrossbeam/crossbeam-claude-skills/tree/main/skills/partner-pitch-builder
+    description: Extract and organize a company's "why partner with us" value into a structured inventory.

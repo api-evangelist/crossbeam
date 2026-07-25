@@ -1,0 +1,38 @@
+generated: '2026-07-18'
+method: searched
+type: Webhooks
+source: https://developers.crossbeam.com/
+docs:
+  - https://developers.crossbeam.com/
+  - https://help.crossbeam.com/en/articles/12732223-getting-started-with-signals-how-to-access-real-time-partner-data-via-api-and-webhooks
+note: >-
+  Crossbeam publishes webhooks (Signals) but no AsyncAPI document. Signals are pushed to a
+  receiver you control in near-real-time; they can also be pulled from the /v1/signals/*
+  endpoint as a backstop. Webhooks are an Enterprise-only feature; only Admins can create them.
+availability: enterprise-only
+consumption:
+  - mode: push
+    transport: webhook
+    note: Crossbeam POSTs the signal to your endpoint when it fires. Best for real-time activation.
+  - mode: pull
+    transport: rest
+    endpoint: /v1/signals/*
+    note: Fetch recent signals (e.g. last 24h of Opportunity Closed Won) for batch sync or missed-webhook recovery.
+events:
+  - name: Opportunity Created
+    label: partner deal opened
+  - name: Opportunity Closed Won
+    label: partner deal closed won
+    note: Expanded signals can include contact-level detail (partner-shared contacts tied to the deal and their role).
+security:
+  signature_header: X-Crossbeam-Signature-256
+  signature_algorithm: HMAC-SHA256 over (body + timestamp), base64-encoded, constant-time compared
+  timestamp_header: X-Crossbeam-Timestamp
+  replay_window_seconds: 300
+  shared_secret: Provided in the Crossbeam UI at webhook setup.
+  guidance: Use a random, hard-to-guess receiver path as defense in depth.
+delivery:
+  expected_response: 2xx (200 or 201), no body required
+  retry_on_status: [408, 429, 500, 502, 503, 504]
+  idempotency: Handlers must be idempotent; a signal can be delivered more than once.
+  backstop: After retries are exhausted, fetch the missed message via the /v1/signals/* REST endpoint.

@@ -1,0 +1,56 @@
+generated: '2026-07-18'
+method: derived
+source: https://developers.crossbeam.com/
+note: >-
+  Entity model derived from the documented Crossbeam Partner API resource surface (REST API
+  guide + MCP tool semantics). No OpenAPI was captured (the hosted spec is bot-protected), so
+  field-level relationships are inferred from documented resources, not a machine-read schema.
+entities:
+  - name: Organization
+    description: A Crossbeam account/tenant; a user may belong to multiple orgs. Selected per request via the Xbeam-Organization header.
+    id: uuid
+    source_endpoint: GET /v0.1/users/me
+  - name: User
+    description: An authenticated Crossbeam user; /v0.1/users/me lists the orgs the token can access.
+    source_endpoint: GET /v0.1/users/me
+  - name: Partner
+    description: Another organization you share data with; partner records and coverage.
+    source_endpoint: GET /v1/partners
+    scope: read:partnerships
+  - name: Population
+    description: A defined data segment (e.g. customers, prospects, open opportunities) that is mapped against partners.
+    scope: read:populations
+  - name: Report
+    description: Overlap / account-mapping results between your populations and a partner's populations.
+    scope: read:reports
+  - name: Signal
+    description: A real-time partner event (e.g. Opportunity Created, Opportunity Closed Won), delivered via webhook or /v1/signals/*.
+    source_endpoint: /v1/signals/*
+  - name: ActivityTimeline
+    description: The Crossbeam timeline; the only public write surface.
+    scope: write:activity-timeline
+relationships:
+  - from: User
+    to: Organization
+    type: has_many
+    via: users-me
+  - from: Organization
+    to: Partner
+    type: has_many
+    via: partners
+  - from: Organization
+    to: Population
+    type: has_many
+    via: populations
+  - from: Report
+    to: Population
+    type: has_many
+    via: overlap-of-populations
+  - from: Signal
+    to: Partner
+    type: belongs_to
+    via: partner
+  - from: Signal
+    to: Population
+    type: belongs_to
+    via: population-overlap

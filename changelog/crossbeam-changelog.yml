@@ -1,0 +1,13 @@
+generated: '2026-07-18'
+method: searched
+source: https://www.crossbeam.com/resources/product-updates
+docs:
+  - https://www.crossbeam.com/resources/product-updates
+note: >-
+  Crossbeam publishes dated product updates on its marketing site rather than a per-endpoint
+  API changelog. The developer docs at developers.crossbeam.com are the versioned source of
+  truth for API changes. No structured, machine-readable API changelog feed was found; recent
+  entries are not enumerated here to avoid fabrication.
+scheme: dated-product-updates
+current_api_versions: [v0.1, v1]
+entries: []
