@@ -32,7 +32,7 @@ x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-18'
+modified: '2026-08-14'
 tags:
 - Company
 - Ecosystem-Led Growth
@@ -70,6 +70,12 @@ apis:
     url: data-model/crossbeam-data-model.yml
   - type: Lifecycle
     url: lifecycle/crossbeam-lifecycle.yml
+  - type: RateLimits
+    url: rate-limits/crossbeam-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/crossbeam-problem-types.yml
+  - type: Postman
+    url: https://developers.crossbeam.com/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -136,8 +142,36 @@ common:
   url: lifecycle/crossbeam-lifecycle.yml
 - type: ChangeLog
   url: changelog/crossbeam-changelog.yml
+- type: ToolCrosswalk
+  url: mcp/crossbeam-tool-crosswalk.yml
+- type: WellKnown
+  url: well-known/crossbeam-well-known.yml
+- type: Packages
+  url: packages/crossbeam-packages.yml
+- type: SDKs
+  url: packages/crossbeam-packages.yml
+- type: Plans
+  url: plans/crossbeam-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/crossbeam-rate-limits.yml
+- type: ErrorCatalog
+  url: errors/crossbeam-problem-types.yml
+- type: VulnerabilityDisclosure
+  url: security/crossbeam-vulnerability-disclosure.yml
+- type: Security
+  url: https://www.crossbeam.com/legal/responsible-disclosure
+- type: Postman
+  url: https://developers.crossbeam.com/
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-14'
+  status: enriched
+  artifacts_added: 11
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+x-coverage:
+  state: covered
+  reason: null
+  detail: >-
+    Crossbeam publishes no OpenAPI, but it does publish a first-party machine-readable contract
+    — a public Postman collection at developers.crossbeam.com (22 v1 operations) — and a live
+    OAuth-gated remote MCP server at mcp.crossbeam.com verified by RFC 9728 challenge.
+  checked: '2026-08-14'
