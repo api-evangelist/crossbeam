@@ -1,20 +1,35 @@
-generated: '2026-07-18'
+generated: '2026-08-14'
 method: searched
 source: https://developers.crossbeam.com/
 docs:
   - https://developers.crossbeam.com/
+  - https://status.crossbeam.com/
 versioning:
   scheme: uri-path
-  observed: [v0.1, v1]
-  note: Endpoints are versioned in the URI path; v0.1 and v1 paths both in use.
+  current: v1
+  observed: [v1]
+  note: >-
+    Every runnable endpoint in Crossbeam's first-party Partner API collection is under /v1. The
+    prose in the same document still references /v0.1/users/me while the request beside it is
+    GET /v1/users/me — an inconsistency in Crossbeam's own material, not two live versions.
 deprecation:
   policy_url: null
-  sunset_header: null
-  note: No public deprecation policy or RFC 8594 Sunset-header support was found in the docs.
-sla:
-  url: https://status.crossbeam.com/
+  sunset_header: false
   note: >-
-    Rate limits and operational limits are defined in Crossbeam's security policy and are
-    subject to change at Crossbeam's discretion.
+    No public deprecation policy, no RFC 8594 Sunset/Deprecation header support, and no
+    end-of-life schedule was found in the docs. No Deprecation pointer is emitted in apis.yml.
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    No published uptime target or SLA document. The security policy was read in full and
+    contains none. Operational limits are described only as "defined in our security policy and
+    subject to change at our discretion".
 status_page: https://status.crossbeam.com/
+status_page_platform: Atlassian Statuspage
 deprecated_operations: []
+availability_gates:
+  - {surface: REST Partner API, gate: Custom Integration app; positioned for Enterprise}
+  - {surface: Signals webhooks, gate: Enterprise-only; Admins only can create them}
+  - {surface: MCP server, gate: Limited Availability — Supernode and Enterprise, by approved domain}
+checked: '2026-08-14'

@@ -1,56 +1,127 @@
-generated: '2026-07-18'
-method: derived
-source: https://developers.crossbeam.com/
+generated: '2026-08-14'
+method: searched
+source: postman/crossbeam-partner-api.postman_collection.json
+docs:
+  - https://developers.crossbeam.com/
 note: >-
-  Entity model derived from the documented Crossbeam Partner API resource surface (REST API
-  guide + MCP tool semantics). No OpenAPI was captured (the hosted spec is bot-protected), so
-  field-level relationships are inferred from documented resources, not a machine-read schema.
+  Entity model read from Crossbeam's first-party Partner API Postman collection — the only
+  machine-readable description of the REST surface (there is no OpenAPI). Every endpoint,
+  scope and query parameter below appears verbatim in that collection; field-level schemas are
+  not asserted because the collection ships example responses rather than declared schemas.
+  This supersedes the earlier round's model, which was inferred from prose and carried /v0.1
+  paths.
+base_url: https://api.crossbeam.com
 entities:
-  - name: Organization
-    description: A Crossbeam account/tenant; a user may belong to multiple orgs. Selected per request via the Xbeam-Organization header.
-    id: uuid
-    source_endpoint: GET /v0.1/users/me
   - name: User
-    description: An authenticated Crossbeam user; /v0.1/users/me lists the orgs the token can access.
-    source_endpoint: GET /v0.1/users/me
+    description: An authenticated Crossbeam user. The bootstrap resource — it names the organizations the token can act for.
+    source_endpoints:
+      - GET /v1/users/me
+      - GET /v1/users/organization/{id}
+    scope: n/a
+  - name: Organization
+    description: >-
+      A Crossbeam account/tenant. A user may belong to more than one; the target org is selected
+      per request with the Xbeam-Organization header, whose value is organization.uuid.
+    id: uuid
+    source_endpoints:
+      - GET /v1/users/me
+      - GET /v1/users/organization/{id}
   - name: Partner
-    description: Another organization you share data with; partner records and coverage.
-    source_endpoint: GET /v1/partners
+    description: Another organization you share data with, including the tags your users have set on it.
+    source_endpoints:
+      - GET /v1/partners
+      - GET /v1/partners/{id}
+    scope: read:partnerships
+  - name: PartnerTag
+    description: The tag vocabulary applied to partners by users of the organization.
+    source_endpoints:
+      - GET /v1/partner-tags
     scope: read:partnerships
   - name: Population
-    description: A defined data segment (e.g. customers, prospects, open opportunities) that is mapped against partners.
+    description: A defined segment of your own records (customers, prospects, open opportunities) that gets mapped against partners.
+    source_endpoints:
+      - GET /v1/populations
+      - GET /v1/populations/{id}
     scope: read:populations
+  - name: PartnerPopulation
+    description: A population a partner has chosen to share with you.
+    source_endpoints:
+      - GET /v1/partner-populations
+      - GET /v1/partner-populations/{id}
+    scope: read:partnerships
   - name: Report
-    description: Overlap / account-mapping results between your populations and a partner's populations.
+    description: A saved report you have created over overlap / account-mapping results.
+    source_endpoints:
+      - GET /v1/reports
     scope: read:reports
+  - name: AccountRecord
+    description: One of your own account records, sourced from your connected CRM/warehouse/CSV data sources.
+    source_endpoints:
+      - GET /v1/records/accounts
+      - GET /v1/records/accounts/search
+    search_keys: [term, record_id, domain, opportunity_id, contact_id]
+    scope: read:reports
+  - name: LeadRecord
+    description: One of your own lead records.
+    source_endpoints:
+      - GET /v1/records/leads
+      - GET /v1/records/leads/search
+    search_keys: [term, record_id, email]
+    scope: read:reports
+  - name: Overlap
+    description: >-
+      The core Crossbeam object — a matched pair of records, one yours and one a partner's
+      (e.g. matched on website/domain). Carries the partner organization and the partner
+      populations in which your record was matched. Split by the side that is yours: accounts
+      or leads.
+    source_endpoints:
+      - GET /v1/overlaps/accounts
+      - GET /v1/overlaps/accounts/search
+      - GET /v1/overlaps/leads
+      - GET /v1/overlaps/leads/search
+    scope: read:reports
+    pagination: cursor (bookmarkable); the /search variants are unpaged
   - name: Signal
-    description: A real-time partner event (e.g. Opportunity Created, Opportunity Closed Won), delivered via webhook or /v1/signals/*.
-    source_endpoint: /v1/signals/*
+    description: >-
+      A behavioural event derived from a partner's CRM opportunity data — a partner opening or
+      closing/winning a deal on a record you overlap on. Delivered by webhook and readable here.
+    source_endpoints:
+      - GET /v1/signals/accounts
+      - GET /v1/signals/leads
+      - GET /v1/signals/own-deals
+    scope: read:reports
+    fields:
+      - signal_id — unique per row
+      - event_id — shared across rows from the same underlying event; group by it to reconstruct the aggregate
+    filters: [limit, record_id (repeatable), population_id (repeatable), cursor]
+    note: >-
+      /v1/signals/own-deals returns own-direction signals as per-overlap rows: one row per
+      partner overlap on your own open or closed-won deals.
+  - name: AuditLog
+    description: Organization audit trail.
+    source_endpoints:
+      - GET /v1/audit-logs
+    pagination: cursor; limit default 1000, maximum 1000
   - name: ActivityTimeline
-    description: The Crossbeam timeline; the only public write surface.
+    description: >-
+      The Crossbeam timeline. The only write surface the OAuth scope set contemplates
+      (write:activity-timeline) — but no timeline endpoint appears in the published collection,
+      so the write path is not publicly documented.
     scope: write:activity-timeline
+    published_endpoint: false
 relationships:
-  - from: User
-    to: Organization
-    type: has_many
-    via: users-me
-  - from: Organization
-    to: Partner
-    type: has_many
-    via: partners
-  - from: Organization
-    to: Population
-    type: has_many
-    via: populations
-  - from: Report
-    to: Population
-    type: has_many
-    via: overlap-of-populations
-  - from: Signal
-    to: Partner
-    type: belongs_to
-    via: partner
-  - from: Signal
-    to: Population
-    type: belongs_to
-    via: population-overlap
+  - {from: User, to: Organization, type: has_many, via: 'authorizations[].organization.uuid'}
+  - {from: Organization, to: User, type: has_many, via: '/v1/users/organization/{id}'}
+  - {from: Organization, to: Partner, type: has_many, via: /v1/partners}
+  - {from: Partner, to: PartnerTag, type: has_many, via: tags}
+  - {from: Partner, to: PartnerPopulation, type: has_many, via: /v1/partner-populations}
+  - {from: Organization, to: Population, type: has_many, via: /v1/populations}
+  - {from: Population, to: AccountRecord, type: has_many, via: population membership}
+  - {from: Population, to: LeadRecord, type: has_many, via: population membership}
+  - {from: Overlap, to: AccountRecord, type: belongs_to, via: your side of the match}
+  - {from: Overlap, to: PartnerPopulation, type: has_many, via: partner populations the record matched in}
+  - {from: Overlap, to: Partner, type: belongs_to, via: partner organization}
+  - {from: Signal, to: Overlap, type: belongs_to, via: per-overlap row}
+  - {from: Signal, to: Population, type: has_many, via: population_id}
+  - {from: Report, to: Overlap, type: has_many, via: report results}
+checked: '2026-08-14'

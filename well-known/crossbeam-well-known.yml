@@ -1,19 +1,100 @@
-generated: '2026-07-18'
-method: searched
+generated: '2026-08-14'
+method: probed
 note: >-
-  Probed the standard /.well-known/ discovery surface on the API and website hosts. None
-  returned 200; recorded here as honest negative results. No WellKnown/SecurityTxt pointer
-  is emitted because no document was found.
+  Probed the standard /.well-known/ discovery surface on every Crossbeam host — the API host,
+  the website, the Postman-published developer docs, the app, the authorization server and the
+  remote MCP server. Two hosts serve real documents: auth.crossbeam.com (the Auth0-backed
+  authorization server named in the developer docs) returns OIDC discovery and RFC 8414
+  authorization-server metadata, and mcp.crossbeam.com returns RFC 9728 protected-resource
+  metadata plus its own RFC 8414 document. Those are saved verbatim below. app.crossbeam.com
+  answers 200 with the SPA HTML shell for several /.well-known/* paths — recorded as a miss,
+  not a document. status.crossbeam.com serves a 200 security.txt, but it is Atlassian's
+  Statuspage vendor document (Canonical: https://www.atlassian.com/.well-known/security.txt),
+  NOT Crossbeam's, so no SecurityTxt pointer is emitted from it.
 hosts:
+  - host: https://auth.crossbeam.com
+    role: authorization server (OAuth 2.0 / OIDC, Auth0 custom domain)
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        content_type: application/json
+        file: crossbeam-openid-configuration.json
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: application/json
+        note: byte-identical to the openid-configuration document; not saved twice
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://mcp.crossbeam.com
+    role: remote MCP server (resource_name "Crossbeam MCP")
+    documents:
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+        content_type: application/json
+        file: crossbeam-mcp-oauth-protected-resource.json
+        note: RFC 9728. Advertised in the WWW-Authenticate challenge on the MCP endpoint itself.
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: application/json
+        file: crossbeam-mcp-oauth-authorization-server.json
+        note: >-
+          RFC 8414. Declares dynamic client registration (/register) and PKCE S256; jwks_uri
+          points back at auth.crossbeam.com, tying the MCP server to the same identity plane.
+      - {path: /.well-known/openid-configuration, status: 200, note: same document as oauth-authorization-server}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
   - host: https://api.crossbeam.com
+    role: REST Partner API host
+    documents:
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://www.crossbeam.com
+    role: marketing site (Webflow)
     documents:
       - {path: /.well-known/security.txt, status: 404}
       - {path: /.well-known/openid-configuration, status: 404}
       - {path: /.well-known/oauth-authorization-server, status: 404}
       - {path: /.well-known/api-catalog, status: 404}
-  - host: https://www.crossbeam.com
-    documents:
-      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
   - host: https://developers.crossbeam.com
+    role: developer docs (Postman-published collection)
     documents:
       - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://app.crossbeam.com
+    role: web application (SPA)
+    documents:
+      - {path: /.well-known/openid-configuration, status: 200, document: false, note: HTML SPA shell, not a document — treated as a miss}
+      - {path: /.well-known/oauth-authorization-server, status: 200, document: false, note: HTML SPA shell — miss}
+      - {path: /.well-known/oauth-protected-resource, status: 200, document: false, note: HTML SPA shell — miss}
+      - {path: /.well-known/api-catalog, status: 200, document: false, note: HTML SPA shell — miss}
+      - {path: /.well-known/security.txt, status: 403}
+      - {path: /.well-known/agent-card.json, status: 403}
+      - {path: /.well-known/agent.json, status: 403}
+  - host: https://status.crossbeam.com
+    role: status page (Atlassian Statuspage)
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        document: false
+        third_party: true
+        note: >-
+          Atlassian's vendor security.txt served by Statuspage — Contact
+          security@atlassian.com, Canonical https://www.atlassian.com/.well-known/security.txt.
+          Not a Crossbeam-published document; no SecurityTxt credit.
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+checked: '2026-08-14'

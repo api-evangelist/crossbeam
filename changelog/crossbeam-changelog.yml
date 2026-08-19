@@ -1,13 +1,36 @@
-generated: '2026-07-18'
+generated: '2026-08-14'
 method: searched
 source: https://www.crossbeam.com/resources/product-updates
 docs:
   - https://www.crossbeam.com/resources/product-updates
+  - https://help.crossbeam.com/en/
 note: >-
-  Crossbeam publishes dated product updates on its marketing site rather than a per-endpoint
-  API changelog. The developer docs at developers.crossbeam.com are the versioned source of
-  truth for API changes. No structured, machine-readable API changelog feed was found; recent
-  entries are not enumerated here to avoid fabrication.
+  Crossbeam publishes no API changelog. What it publishes is a dated PRODUCT-UPDATE stream on
+  the marketing site, covering features rather than endpoints, versions or breaking changes —
+  and its most recent dated entry is from April 2025, more than a year before this check. There
+  is no feed, no per-version notes, and no way for an API consumer to learn that an endpoint
+  changed. The entries below are recorded verbatim as the product-update stream, explicitly not
+  as an API changelog; none of them describes an API change.
 scheme: dated-product-updates
-current_api_versions: [v0.1, v1]
-entries: []
+covers: product features
+covers_api_changes: false
+current_api_versions: [v1]
+feed: null
+entries:
+  - {date: '2025-04-29', title: Introducing Deal Navigator and the Performance Dashboard, kind: feature, api_change: false}
+  - {date: '2025-04-28', title: "What's new in Crossbeam: elevate your GTM strategy", kind: roundup, api_change: false}
+  - {date: '2025-02-25', title: "ELG Attribution in Crossbeam: Measuring What Matters", kind: feature, api_change: false}
+  - {date: '2025-02-11', title: "What's new in Crossbeam: streamlined ecosystem insights", kind: roundup, api_change: false, highlights: [new HubSpot fields, enhanced activity tracking, multi-currency support]}
+  - {date: '2024-04-24', title: "Crossbeam Product Drop: How to Turn Your Ecosystem Data Into Dollars", kind: roundup, api_change: false}
+  - {date: '2024-01-18', title: "Crossbeam Product Drop Webinar: New Features Worth Buzzing About", kind: roundup, api_change: false}
+adjacent_sources:
+  - name: Help Center articles feed
+    url: https://help.crossbeam.com/en/feed.xml
+    note: >-
+      The only dated stream that actually reflects developer-surface change — the MCP server and
+      Signals-via-API articles were published there. Harvested into blogs/ in this repo.
+gaps:
+  - No API changelog or release notes.
+  - No machine-readable feed on the product-update stream.
+  - Newest dated product update is 2025-04-29; the stream appears stale.
+checked: '2026-08-14'

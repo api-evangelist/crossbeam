@@ -1,12 +1,34 @@
-generated: '2026-07-18'
+generated: '2026-08-14'
 method: searched
 source: https://github.com/getcrossbeam/crossbeam-claude-skills
 note: >-
   Crossbeam publishes a public bank of Claude Agent Skills (getcrossbeam/crossbeam-claude-skills).
   The API-grounded routing skill (crossbeam-api-guide) is saved verbatim in this repo as
   crossbeam-api-guide.md; the remaining skills are GTM/ELG workflow skills indexed here by
-  reference to the provider's repo.
+  reference to the provider's repo. One additional skill
+  (crossbeam-partner-overlap-sync.md) is API Evangelist-generated and grounded operation by
+  operation in Crossbeam's first-party Partner API Postman collection — it is marked
+  generated so it is never confused with a provider-published skill.
 skills:
+  - file: crossbeam-partner-overlap-sync.md
+    name: crossbeam-partner-overlap-sync
+    saved: generated
+    method: generated
+    api: https://developers.crossbeam.com/
+    contract: postman/crossbeam-partner-api.postman_collection.json
+    operations:
+      - GET /v1/users/me
+      - GET /v1/partners
+      - GET /v1/partner-populations
+      - GET /v1/overlaps/accounts
+      - GET /v1/overlaps/leads
+      - GET /v1/signals/accounts
+      - GET /v1/signals/leads
+      - GET /v1/signals/own-deals
+    description: >-
+      Sync partner overlaps and ecosystem signals into your own system over the REST Partner
+      API — OAuth token, organization header, cursor pagination via pagination.next_href,
+      bookmark-and-resume, server-side filtering, and the webhook backstop.
   - file: crossbeam-api-guide.md
     name: crossbeam-api-guide
     saved: verbatim

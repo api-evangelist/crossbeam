@@ -1,0 +1,143 @@
+generated: '2026-08-14'
+method: derived
+source: mcp/crossbeam-mcp.yml + postman/crossbeam-partner-api.postman_collection.json
+note: >-
+  Binds each published Crossbeam MCP tool to the REST operation(s) that back it. Crossbeam
+  publishes no OpenAPI, so the REST side of this crosswalk is keyed on the request paths in
+  Crossbeam's own first-party Postman collection (fetched from developers.crossbeam.com), not
+  on operationIds — there are none to cite. The live MCP tools/list manifest is auth-gated
+  (HTTP 401), so tools are mapped by published name and description; every confidence rating
+  below reflects that. No tool, field or endpoint here is invented.
+surfaces:
+  openapi: null
+  openapi_note: Crossbeam publishes no OpenAPI or Swagger document on any host (probed 2026-08-14).
+  rest:
+    contract: postman/crossbeam-partner-api.postman_collection.json
+    published_at: https://developers.crossbeam.com/
+    base_url: https://api.crossbeam.com
+    operations: 22
+    gated: false
+    note: Collection is public; calling the endpoints requires an OAuth token + Xbeam-Organization header.
+  graphql: null
+  mcp:
+    endpoint: https://mcp.crossbeam.com/mcp
+    gated: true
+    gate: OAuth 2.0 (RFC 9728 protected resource); tools/list returns 401 unauthenticated.
+    tools: 9
+crosswalk:
+  - tool: find_overlaps
+    category: overlaps
+    rest:
+      - GET /v1/overlaps/accounts
+      - GET /v1/overlaps/leads
+      - GET /v1/overlaps/accounts/search
+      - GET /v1/overlaps/leads/search
+    binding: rest
+    confidence: high
+    note: >-
+      The overlaps endpoints are the documented "shared accounts with partners" surface. Fans
+      out across the account and lead sides; the search variants are unpaged.
+  - tool: get_account_context
+    category: records
+    rest:
+      - GET /v1/records/accounts/search
+      - GET /v1/records/accounts
+    binding: rest
+    confidence: medium
+    note: >-
+      /v1/records/accounts/search accepts term, record_id, domain, opportunity_id and
+      contact_id — the lookup keys a "unified account details" tool needs. Ownership detail may
+      also draw on the overlaps payload, which carries partner organization + population info.
+  - tool: find_overlap_partners
+    category: overlaps
+    rest:
+      - GET /v1/overlaps/accounts/search
+      - GET /v1/overlaps/accounts
+    binding: rest
+    confidence: medium
+    note: >-
+      "Which partners share this account" is the partner-side projection of an overlap row; the
+      overlaps payload includes the partner organization and the partner populations matched.
+  - tool: get_partner_context
+    category: partners
+    rest:
+      - GET /v1/partners
+      - GET /v1/partners/{id}
+      - GET /v1/partner-populations
+    binding: rest
+    confidence: high
+    note: Partner records, partner tags and the populations a partner shares with you.
+  - tool: get_ecosystem_activity
+    category: signals
+    rest:
+      - GET /v1/signals/accounts
+      - GET /v1/signals/leads
+      - GET /v1/signals/own-deals
+    binding: rest
+    confidence: high
+    note: >-
+      Signals are the documented "recent partner activity with signal events" surface (partner
+      deal opened / closed-won). Same data is also pushed via the Signals webhook.
+mcp_only:
+  - tool: find_partner_recommendations
+    reason: >-
+      Ranking partners for an opportunity is a server-side composite over overlaps + partner
+      performance; no single public REST operation returns a ranked recommendation set.
+  - tool: get_partner_suggestions
+    reason: >-
+      Suggests potential NEW partners from the Crossbeam Network. The public REST API exposes
+      only partners you already have; there is no network-discovery endpoint.
+  - tool: get_list_link
+    reason: >-
+      Generates a shareable Crossbeam app list URL. A product/app affordance, not a REST
+      resource — the public API has no list or share-link endpoint.
+  - tool: search_crossbeam_knowledge
+    reason: >-
+      Answers product and ELG best-practice questions from Crossbeam's documentation corpus.
+      Knowledge retrieval, not customer data; nothing in the Partner API backs it.
+rest_only:
+  - group: identity
+    operations:
+      - GET /v1/users/me
+      - GET /v1/users/organization/{id}
+    note: >-
+      Required bootstrap for REST clients (the Xbeam-Organization uuid comes from /v1/users/me).
+      An MCP client never needs it — org selection happens inside the OAuth session.
+  - group: populations
+    operations:
+      - GET /v1/populations
+      - GET /v1/populations/{id}
+      - GET /v1/partner-populations/{id}
+    note: Population definitions are configuration; no MCP tool exposes them directly.
+  - group: reports
+    operations:
+      - GET /v1/reports
+    note: Saved report definitions have no MCP equivalent.
+  - group: records
+    operations:
+      - GET /v1/records/leads
+      - GET /v1/records/leads/search
+    note: >-
+      Your own lead records. MCP's account-context tool covers the account side only; the lead
+      side is REST-only.
+  - group: metadata
+    operations:
+      - GET /v1/partner-tags
+    note: Partner tag vocabulary; no MCP tool.
+  - group: audit
+    operations:
+      - GET /v1/audit-logs
+    note: Governance/compliance surface, deliberately absent from the agent tool set.
+coverage:
+  tools_published: 9
+  tools_bound_to_rest: 5
+  tools_mcp_only: 4
+  rest_operations_total: 22
+  rest_operations_with_a_tool: 12
+  rest_operations_without_a_tool: 10
+divergence_summary: >-
+  Neither surface is a superset. MCP adds four capabilities with no REST equivalent (partner
+  ranking, network partner suggestions, shareable list links, knowledge search); REST keeps ten
+  operations MCP does not expose, including the entire audit-log, reports and lead-record
+  surface. Agents that need lead records or audit trails must use the REST API.
+checked: '2026-08-14'

@@ -1,0 +1,103 @@
+generated: '2026-08-14'
+method: searched
+source: https://www.crossbeam.com/pricing
+docs:
+  - https://www.crossbeam.com/pricing
+provider: Crossbeam
+providerId: crossbeam
+note: >-
+  Crossbeam publishes a four-tier plan ladder with real list prices on the two lower tiers and
+  "custom" on the two upper tiers. The unit that matters for API consumers is the annual
+  "unique record export" allowance, because Crossbeam's own developer docs state that REST API
+  reads and webhook deliveries both draw down that allowance — it is the closest thing the
+  company publishes to an API quota. API access itself is not sold as a line item: the REST
+  Partner API is positioned for Enterprise, webhooks (Signals) are Enterprise-only, and the
+  remote MCP server is in Limited Availability for Supernode and Enterprise by approved domain.
+currency: USD
+plan_count: 4
+plans:
+  - id: free
+    name: Free
+    price: 0
+    price_display: "$0"
+    currency: USD
+    period: perpetual
+    contact_sales: false
+    included:
+      standard_populations: 3
+      custom_populations: 0
+      offline_partners: 1
+      single_partner_account_mapping_records: 50
+    limits:
+      - "Up to 3 standard populations"
+      - "Single-partner account mapping capped at 50 records at a time"
+      - "1 offline partner"
+      - "Preview access to advanced features"
+    notes: No credit card required.
+    api_access: none published
+  - id: connector
+    name: Connector
+    price: 4800
+    price_display: "$4,800/year"
+    currency: USD
+    period: year
+    contact_sales: false
+    included:
+      full_access_seats: 1
+      unique_record_exports: 5000
+      custom_populations: 3
+      offline_partners: unlimited
+    overage:
+      additional_full_access_seat: "$1,800/user/yr"
+    limits:
+      - "5,000 unique record exports per year"
+      - "Up to 3 custom populations"
+    notes: >-
+      Annual billing; a monthly payment option carries a 10% surcharge. Credit card accepted.
+    api_access: none published
+  - id: supernode
+    name: Supernode
+    price: null
+    price_display: Custom
+    currency: USD
+    period: year
+    contact_sales: true
+    included:
+      full_access_seats: 3
+      unique_record_exports: 25000
+      custom_populations: unlimited
+    overage:
+      sales_seat: "$40/user/mo"
+    limits:
+      - "25,000 unique record exports per year"
+    notes: Marked "Most popular". Includes a dedicated Customer Success Manager.
+    api_access: MCP server available in Limited Availability by approved domain.
+  - id: enterprise
+    name: Enterprise
+    price: null
+    price_display: Custom
+    currency: USD
+    period: year
+    contact_sales: true
+    included:
+      full_access_seats: custom
+      unique_record_exports: 100000
+      custom_populations: unlimited
+    overage:
+      sales_seat: custom
+    limits:
+      - "Starts with 100,000 unique record exports per year"
+      - "Advanced access controls"
+    notes: White-glove onboarding.
+    api_access: >-
+      REST Partner API (custom integrations), Signals webhooks (Enterprise-only) and the MCP
+      server (Limited Availability).
+quota_notes:
+  - >-
+    "Unique record exports" is the metered unit across the ladder: 5,000 (Connector) → 25,000
+    (Supernode) → 100,000+ (Enterprise).
+  - >-
+    Crossbeam's developer documentation states that API reads and webhook deliveries count
+    toward the Record Export allowance, so integrations should filter server-side rather than
+    poll. See rate-limits/crossbeam-rate-limits.yml.
+checked: '2026-08-14'

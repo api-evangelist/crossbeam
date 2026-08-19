@@ -1,0 +1,1 @@
+{"resource":"https://mcp.crossbeam.com","authorization_servers":["https://mcp.crossbeam.com"],"scopes_supported":["email","offline_access","openid","profile"],"bearer_methods_supported":["header"],"resource_name":"Crossbeam MCP"}

@@ -1,0 +1,60 @@
+generated: '2026-08-14'
+method: searched
+source: https://developers.crossbeam.com/
+docs:
+  - https://developers.crossbeam.com/
+  - https://www.crossbeam.com/legal/security-policy
+  - https://www.crossbeam.com/pricing
+provider: Crossbeam
+providerId: crossbeam
+limit_count: 0
+note: >-
+  Crossbeam publishes NO numeric API rate limits. Its Partner API documentation says verbatim:
+  "Rate limits are defined in our security policy and are subject to change with our own
+  discretion." The referenced security policy (https://www.crossbeam.com/legal/security-policy)
+  was read in full and contains no rate, quota, throttle, header or status-code detail — it is
+  a security-controls document. No X-RateLimit-*, RateLimit-* or Retry-After header is
+  documented anywhere, and no 429 behaviour is described for the REST API. An agent therefore
+  cannot know its budget before it starts, and cannot read a runtime signal to back off.
+  Recorded as an honest zero rather than omitted.
+headers:
+  documented: false
+  observed: null
+  note: >-
+    Not observable without credentials — every Partner API endpoint requires an OAuth bearer
+    token plus an Xbeam-Organization header, so no unauthenticated 200 exists on which to read
+    live limit headers.
+response_codes:
+  throttled: undocumented
+  note: >-
+    The only retry-status list Crossbeam publishes is for WEBHOOK delivery, not for inbound API
+    calls: Crossbeam retries a webhook POST to your receiver on 408, 429, 500, 502, 503 and 504,
+    then expects you to recover the missed message from the /v1/signals/* REST endpoints. That
+    is Crossbeam retrying YOU; it says nothing about limits it applies to your calls.
+limits: []
+related_quotas:
+  - name: Unique record exports
+    scope: account (per plan, per year)
+    kind: commercial-quota
+    values:
+      connector: 5000
+      supernode: 25000
+      enterprise: 100000
+    note: >-
+      Not a rate limit, but the only published consumption ceiling that API traffic draws
+      against — Crossbeam's docs state REST reads and webhook deliveries both count toward the
+      Record Export allowance. See plans/crossbeam-plans-pricing.yml.
+  - name: Page size
+    scope: per request
+    kind: pagination-bound
+    default: 25
+    maximum: 1000
+    note: >-
+      The `limit` query parameter on the records, overlaps, signals and audit-log endpoints.
+      Default 25 (1000 on /v1/audit-logs), maximum 1000. A pagination bound, not a throttle.
+      See conventions/crossbeam-conventions.yml.
+guidance:
+  - Filter server-side with the search endpoints instead of listing and filtering client-side.
+  - Subscribe to Signals webhooks rather than polling /v1/signals/* — polling burns record-export allowance.
+  - Treat the absence of a published limit as a reason to back off conservatively, not as permission to hammer.
+checked: '2026-08-14'

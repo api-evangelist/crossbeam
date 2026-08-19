@@ -1,9 +1,10 @@
-generated: '2026-07-18'
+generated: '2026-08-14'
 method: searched
 source: https://www.crossbeam.com/what-is-crossbeam/security
 docs:
   - https://www.crossbeam.com/what-is-crossbeam/security
   - https://security.crossbeam.com/
+  - https://developers.crossbeam.com/
 standards:
   - id: soc2-type-ii
     conforms: true
@@ -25,11 +26,58 @@ standards:
     evidence: Certified under the EU-US Data Privacy Framework (formerly Privacy Shield).
   - id: oauth2
     conforms: true
-    evidence: Public Partner API authenticates via standard OAuth 2.0 authorization-code flow.
+    evidence: >-
+      Partner API authenticates via standard OAuth 2.0 authorization-code flow;
+      grant_types_supported at auth.crossbeam.com includes authorization_code, refresh_token,
+      client_credentials and device_code.
   - id: oidc
     conforms: true
-    evidence: openid scope required as the baseline; OAuth authorize/token endpoints at auth.crossbeam.com.
+    evidence: >-
+      PROBED — https://auth.crossbeam.com/.well-known/openid-configuration returns 200 with
+      issuer, authorization/token/userinfo/jwks endpoints and PKCE S256.
+      Saved at well-known/crossbeam-openid-configuration.json.
+  - id: rfc8414-oauth-authorization-server-metadata
+    conforms: true
+    evidence: >-
+      PROBED — 200 at auth.crossbeam.com/.well-known/oauth-authorization-server, and a separate
+      200 at mcp.crossbeam.com/.well-known/oauth-authorization-server for the MCP server.
+  - id: rfc9728-oauth-protected-resource-metadata
+    conforms: true
+    evidence: >-
+      PROBED — mcp.crossbeam.com returns 401 with
+      'WWW-Authenticate: Bearer realm="mcp", resource_metadata=...' and serves a valid
+      protected-resource document (resource_name "Crossbeam MCP").
+      Saved at well-known/crossbeam-mcp-oauth-protected-resource.json.
+  - id: rfc7591-dynamic-client-registration
+    conforms: true
+    evidence: The MCP authorization-server metadata advertises registration_endpoint https://mcp.crossbeam.com/register.
+  - id: rfc7636-pkce
+    conforms: true
+    evidence: code_challenge_methods_supported [S256, plain] on both auth.crossbeam.com and mcp.crossbeam.com.
+  - id: mcp
+    conforms: true
+    evidence: Remote MCP server at https://mcp.crossbeam.com/mcp, OAuth-gated, 9 published tools (Limited Availability).
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: No security.txt served on any Crossbeam-controlled host (probed 2026-08-14).
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: No problem+json; no error reference published. See errors/crossbeam-problem-types.yml.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No deprecation policy or Sunset/Deprecation header support documented.
+  - id: openapi
+    conforms: false
+    evidence: >-
+      No OpenAPI or Swagger document served on api.crossbeam.com, developers.crossbeam.com,
+      www.crossbeam.com or api.getcrossbeam.com (probed 2026-08-14). The machine-readable
+      contract Crossbeam does publish is a Postman collection.
+  - id: a2a
+    conforms: false
+    evidence: No agent card at /.well-known/agent-card.json or /.well-known/agent.json on any host.
 compliance_program:
   trust_center: https://security.crossbeam.com/
   platform: Safebase
   certifications: [SOC 2 Type II, ISO 27001, GDPR, CCPA, PCI DSS, EU-US Data Privacy Framework]
+  penetration_testing: Quarterly, by an external firm; reports available to customers under NDA.
+checked: '2026-08-14'

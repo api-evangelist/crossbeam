@@ -1,0 +1,102 @@
+generated: '2026-08-14'
+method: searched
+source: >-
+  Registry searches against npm, PyPI, RubyGems, crates.io, Packagist, NuGet, Maven Central and
+  pkg.go.dev, plus Crossbeam's own public source org (gitlab.com/crossbeam-public) and GitHub
+  org (github.com/getcrossbeam).
+docs:
+  - https://developers.crossbeam.com/
+  - https://gitlab.com/crossbeam-public
+  - https://github.com/getcrossbeam
+note: >-
+  Crossbeam ships no conventional multi-language SDK family. The one first-party package
+  published to a registry is a Singer.io tap for data extraction; the rest of Crossbeam's
+  first-party client code is published as sample/reference apps in its public GitLab group,
+  not as installable libraries. Name collisions were checked and excluded: the RubyGems gem
+  `crossbeam` (tarellel/crossbeam, a service-object gem) and the widely used Rust `crossbeam`
+  concurrency crates are unrelated projects that merely share the name — neither is credited
+  here. Two genuinely Crossbeam-targeting packages exist but are third-party and are marked
+  official: false.
+packages:
+  - language: python
+    registry: pypi
+    name: tap-crossbeam
+    url: https://pypi.org/project/tap-crossbeam/
+    install: pip install tap-crossbeam
+    source: https://gitlab.com/crossbeam-public/crossbeam-singer-tap
+    official: true
+    kind: data-connector
+    version: 0.4.1
+    published: '2021-09-24'
+    note: >-
+      Singer.io tap that extracts partners, populations, partner_populations, reports,
+      reports_data, threads and thread_timelines from the Crossbeam API. Published from
+      Crossbeam's own public GitLab group. DECAY SIGNAL: last release 2021-09-24 — nearly five
+      years before this check, and it predates the entire v1 records/overlaps/signals surface
+      documented in the current Partner API collection, so it does not cover the API as it
+      ships today.
+  - language: javascript
+    registry: git
+    name: crossbeam-simple-oauth2
+    url: https://gitlab.com/crossbeam-public/crossbeam-simple-oauth2
+    install: git clone https://gitlab.com/crossbeam-public/crossbeam-simple-oauth2
+    official: true
+    kind: sample-app
+    version: null
+    published: '2021-01-04'
+    note: >-
+      First-party Node.js reference implementation of the three-legged OAuth flow, linked from
+      the Partner API docs. Not published to npm and explicitly "provided as-is, not intended
+      for production use", so there is no registry version to record — `published` is the last
+      repository activity date reported by the GitLab API.
+  - language: javascript
+    registry: git
+    name: crossbeam-oauth-spa
+    url: https://gitlab.com/crossbeam-public/crossbeam-oauth-spa
+    install: git clone https://gitlab.com/crossbeam-public/crossbeam-oauth-spa
+    official: true
+    kind: sample-app
+    version: null
+    published: '2021-09-27'
+    note: >-
+      First-party example SPA demonstrating Crossbeam as an authentication mechanism. No
+      registry distribution; `published` is the last repository activity date from GitLab.
+  - language: javascript
+    registry: npm
+    name: crossbeam-cli
+    url: https://www.npmjs.com/package/crossbeam-cli
+    install: npm install -g crossbeam-cli
+    official: false
+    kind: cli
+    version: 0.1.0
+    published: '2026-05-08'
+    source: https://github.com/Fan-Pier-Labs/crossbeam-cli
+    note: >-
+      Third-party CLI and Node client for the Crossbeam API (partners, populations, overlaps,
+      reports) built by Fan Pier Labs. Not published or endorsed by Crossbeam — recorded for
+      completeness, not counted as a first-party SDK, and no CLI artifact is emitted from it.
+  - language: javascript
+    registry: npm
+    name: "@friggframework/api-module-crossbeam"
+    url: https://www.npmjs.com/package/@friggframework/api-module-crossbeam
+    install: npm install @friggframework/api-module-crossbeam
+    official: false
+    kind: integration-module
+    version: 0.10.1
+    published: '2024-03-27'
+    note: Frigg Framework API module that talks to the Crossbeam API. Third-party (Left Hook / Frigg).
+registries_checked:
+  - {registry: npm, result: no first-party package}
+  - {registry: pypi, result: tap-crossbeam (first-party); crossbeam / crossbeam-api / crossbeam-sdk absent (404)}
+  - {registry: rubygems, result: name taken by an unrelated project — excluded}
+  - {registry: crates.io, result: name taken by the unrelated Rust concurrency crates — excluded}
+  - {registry: packagist, result: none}
+  - {registry: nuget, result: none}
+  - {registry: maven-central, result: none}
+  - {registry: pkg.go.dev, result: none}
+summary:
+  official_packages: 3
+  official_registry_packages: 1
+  third_party_packages: 2
+  languages: [python, javascript]
+checked: '2026-08-14'

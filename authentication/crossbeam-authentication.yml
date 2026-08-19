@@ -1,10 +1,22 @@
-generated: '2026-07-18'
+generated: '2026-08-14'
 method: searched
 source: https://developers.crossbeam.com/
 docs:
   - https://developers.crossbeam.com/
   - https://help.crossbeam.com/en/articles/4677142-rest-api
   - https://gitlab.com/crossbeam-public/crossbeam-simple-oauth2
+discovery:
+  openid_configuration: https://auth.crossbeam.com/.well-known/openid-configuration
+  oauth_authorization_server: https://auth.crossbeam.com/.well-known/oauth-authorization-server
+  jwks_uri: https://auth.crossbeam.com/.well-known/jwks.json
+  probed: '2026-08-14'
+  http_status: 200
+  artifact: well-known/crossbeam-openid-configuration.json
+  note: >-
+    Verified live. The authorization server is an Auth0 custom domain. Discovery advertises
+    PKCE (S256), a device-authorization endpoint, dynamic client registration, revocation, and
+    grant types authorization_code / refresh_token / client_credentials / device_code /
+    implicit / password. token_endpoint_auth_methods_supported includes private_key_jwt.
 summary:
   types: [oauth2]
   oauth2_flows: [authorizationCode]
@@ -35,5 +47,23 @@ required_headers:
     required: true
     note: >-
       Selects which organization's data to return (a user may belong to multiple orgs).
-      Obtain the uuid from GET /v0.1/users/me. Omitting this header is the most common
-      cause of 4xx errors.
+      Obtain the uuid from GET /v1/users/me (Crossbeam's prose still says /v0.1/users/me, but
+      the runnable request in its own collection is /v1). Omitting this header is the most
+      common cause of 4xx errors.
+mcp_authentication:
+  endpoint: https://mcp.crossbeam.com/mcp
+  type: oauth2
+  discovery:
+    protected_resource: https://mcp.crossbeam.com/.well-known/oauth-protected-resource
+    authorization_server: https://mcp.crossbeam.com/.well-known/oauth-authorization-server
+  probed: '2026-08-14'
+  note: >-
+    The remote MCP server runs its OWN authorization server (authorize / oauth/token / register
+    on mcp.crossbeam.com) with dynamic client registration and PKCE, while validating against
+    the same JWKS as the REST API (auth.crossbeam.com/.well-known/jwks.json). Its scope set
+    (openid, profile, email, offline_access) is the OIDC baseline — the read:partnerships /
+    read:reports / read:populations scopes that gate the REST API are not exposed at the MCP
+    authorization layer.
+  artifacts:
+    - well-known/crossbeam-mcp-oauth-protected-resource.json
+    - well-known/crossbeam-mcp-oauth-authorization-server.json

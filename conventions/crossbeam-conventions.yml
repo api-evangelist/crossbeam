@@ -1,41 +1,114 @@
-generated: '2026-07-18'
+generated: '2026-08-14'
 method: searched
 source: https://developers.crossbeam.com/
 docs:
   - https://developers.crossbeam.com/
   - https://help.crossbeam.com/en/articles/4677142-rest-api
+contract: postman/crossbeam-partner-api.postman_collection.json
 authentication:
   style: oauth2
   ref: authentication/crossbeam-authentication.yml
   required_headers:
     - 'Authorization: Bearer <access_token>'
     - 'Xbeam-Organization: <organization-uuid>'
+  bootstrap: >-
+    GET /v1/users/me first — it returns the organizations the token can access; take
+    organization.uuid from the authorizations array for the Xbeam-Organization header.
+  token_lifetime: 24h
+  refresh: offline_access scope + grant_type=refresh_token at https://auth.crossbeam.com/oauth/token
 versioning:
   scheme: uri-path
-  observed_versions: [v0.1, v1]
+  observed_versions: [v1]
   note: >-
-    Endpoints are versioned in the URI path. Both v0.1 (e.g. /v0.1/users/me) and
-    v1 (e.g. /v1/partners, /v1/signals/*) paths are in use.
+    Every endpoint in Crossbeam's first-party Partner API collection is under /v1. The prose in
+    the same document still refers to /v0.1/users/me when describing how to obtain the
+    organization uuid, while the runnable request is GET /v1/users/me — a documentation
+    inconsistency in Crossbeam's own material, recorded rather than resolved. Use /v1.
   ref: lifecycle/crossbeam-lifecycle.yml
-rate_limiting:
+pagination:
+  style: cursor
+  request_params:
+    - name: limit
+      description: How many records to return.
+      default: 25
+      maximum: 1000
+      note: Default is 1000 (not 25) on GET /v1/audit-logs.
+    - name: cursor
+      description: Opaque cursor for the next page; also usable as a durable bookmark.
+  response_object: pagination
+  response_fields:
+    - name: pagination.next_href
+      description: >-
+        Full URL for the next page, carrying the cursor plus every other query parameter the
+        endpoint was called with. Crossbeam's docs say to prefer this over rebuilding the URL.
+    - name: pagination.next_cursor
+      description: The raw cursor value for the next page.
+    - name: items
+      description: Top-level array of results on the records, overlaps and signals endpoints.
+  bookmarking: >-
+    The overlaps and signals endpoints support bookmarking — persist the cursor and resume from
+    it later to collect only what changed since the last run.
+  unpaged_endpoints:
+    - GET /v1/overlaps/accounts/search
+    - GET /v1/overlaps/leads/search
+search:
   note: >-
-    Rate limits are defined in Crossbeam's security policy and are subject to change at
-    Crossbeam's discretion. API reads and webhook deliveries count toward Record Export
-    limits, so integrations should filter server-side and avoid redundant polling.
+    Search is a separate sub-resource (/search) rather than a filter on the list endpoint, and
+    it takes exact-match keys as well as a fuzzy term.
+  params:
+    - name: term
+      matching: fuzzy prefix
+      example: '"wayne" matches both "wayne.enterprises.com" and "Wayne Enterprises"'
+    - {name: record_id, matching: exact}
+    - {name: domain, matching: exact, applies_to: accounts}
+    - {name: email, matching: exact, applies_to: leads}
+    - {name: opportunity_id, matching: exact, applies_to: accounts}
+    - {name: contact_id, matching: exact, applies_to: accounts}
+    - name: 'partner-population-ids[]'
+      matching: repeatable
+      applies_to: overlaps
+      note: Repeat the parameter to include multiple partner populations.
+    - name: population_id
+      matching: repeatable
+      applies_to: signals
+rate_limiting:
+  published: false
+  ref: rate-limits/crossbeam-rate-limits.yml
+  note: >-
+    "Rate limits are defined in our security policy and are subject to change with our own
+    discretion." No numbers, no headers, no 429 contract. API reads and webhook deliveries both
+    count toward the plan's Record Export allowance, so filter server-side and avoid polling.
 idempotency:
   api_write_key: false
   note: >-
-    The public REST API does not document an idempotency-key header for writes. Idempotency
-    guidance applies to the webhook consumer side: handlers must be idempotent because
-    Crossbeam retries deliveries and a signal can arrive more than once.
+    Crossbeam documents no idempotency-key header for writes, and the public REST surface is
+    read-only in practice (the only write scope, write:activity-timeline, has no endpoint in the
+    published collection). Idempotency guidance applies to the WEBHOOK CONSUMER side: receivers
+    must be idempotent because Crossbeam retries deliveries and a signal can arrive more than
+    once. No Idempotency pointer is emitted in apis.yml, because the provider ships no
+    idempotency contract to emit one for.
   ref: asyncapi/crossbeam-signals-webhooks.yml
 error_envelope:
   format: http-status
+  documented: false
   note: >-
-    Standard HTTP status codes. Most 4xx errors on the REST API stem from a missing
-    Xbeam-Organization header. Webhook receivers should return 2xx quickly.
-  ref: errors
+    Standard HTTP status codes with no documented body shape and no RFC 9457 problem+json. Most
+    4xx on the REST API stem from a missing Xbeam-Organization header. Webhook receivers should
+    return 200/201 quickly.
+  ref: errors/crossbeam-problem-types.yml
+request_tracing:
+  request_id_header: null
+  note: >-
+    No request-id or correlation header is documented. The API host does echo Datadog trace
+    headers in its CORS allow-list (x-datadog-trace-id, x-datadog-parent-id), but Crossbeam does
+    not document them as a client-facing tracing contract.
 tooling:
   postman: >-
-    A "Run in Postman" button on the developer docs clones the Crossbeam collection and
-    environment; use the desktop Postman app.
+    The developer portal IS a published Postman collection (developers.crossbeam.com, published
+    id 2s8Z6savX9). "Run in Postman" clones the collection and its environment; Crossbeam's
+    setup guide requires the desktop app, and the callback URL for the OAuth app must be set to
+    https://oauth.pstmn.io/v1/callback.
+  openapi: >-
+    None. Crossbeam publishes no OpenAPI or Swagger document on any host (probed 2026-08-14);
+    the Postman collection is the only machine-readable description of the REST surface.
+checked: '2026-08-14'

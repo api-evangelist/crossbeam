@@ -1,0 +1,76 @@
+generated: '2026-08-14'
+method: derived
+source: postman/crossbeam-partner-api.postman_collection.json
+docs:
+  - https://developers.crossbeam.com/
+  - https://help.crossbeam.com/en/articles/12732223-getting-started-with-signals-how-to-access-real-time-partner-data-via-api-and-webhooks
+format: http-status
+rfc9457: false
+note: >-
+  Crossbeam does not publish an error reference and does not use RFC 9457 problem+json. Its
+  first-party Postman collection carries 200 examples only — no 4xx/5xx example responses to
+  derive a schema from. What follows is therefore the honest, complete set of failure
+  conditions Crossbeam DOES document in prose across the Partner API docs, the Signals/webhook
+  docs and the live OAuth surfaces, each tied to the source that states it. Nothing here is
+  invented, and no error body shape is asserted, because none is published.
+envelope:
+  documented: false
+  note: >-
+    No error envelope is documented for the REST API. The two error bodies actually observed on
+    live unauthenticated probes are the MCP server's {"detail":"Authentication required"} and
+    the API host's bare 403/404 with no body. Clients should not depend on a body shape.
+problems:
+  - status: 401
+    title: Unauthenticated
+    condition: Missing, malformed or expired OAuth 2.0 bearer token.
+    remediation: >-
+      Obtain a token from https://auth.crossbeam.com/oauth/token with
+      audience=https://api.getcrossbeam.com. Access tokens are valid for 24 hours; request the
+      offline_access scope and refresh with grant_type=refresh_token for long-running clients.
+    evidence: >-
+      Observed live on the MCP endpoint (HTTP 401 with WWW-Authenticate: Bearer realm="mcp").
+      Token lifetime and refresh flow are documented in the Partner API collection.
+    source: mcp probe + https://developers.crossbeam.com/
+  - status: 4xx
+    title: Missing Xbeam-Organization header
+    condition: >-
+      Request omitted the Xbeam-Organization header. Crossbeam names this the single most
+      common 4xx on the Partner API.
+    remediation: >-
+      Call GET /v1/users/me, take organization.uuid from the authorizations array, and send it
+      as Xbeam-Organization on every subsequent call.
+    evidence: >-
+      "Most 4xx errors stem from a missing Xbeam-Organization header" — Partner API docs. The
+      exact status code is not published, which is why it is recorded as 4xx rather than guessed.
+    source: https://developers.crossbeam.com/
+  - status: 403
+    title: Insufficient scope
+    condition: >-
+      Token lacks the OAuth scope the endpoint requires (read:partnerships, read:reports,
+      read:populations, write:activity-timeline).
+    remediation: >-
+      Re-authorize with the scope the endpoint documents. Each endpoint's doc page names its
+      required scope; see scopes/crossbeam-scopes.yml.
+    evidence: Per-endpoint scope requirements are published in the Partner API collection.
+    source: https://developers.crossbeam.com/
+    note: Status code inferred from standard OAuth semantics; Crossbeam does not state it explicitly.
+    confidence: low
+webhook_receiver_contract:
+  note: >-
+    The one place Crossbeam publishes explicit status-code semantics is the Signals webhook,
+    and the direction is reversed — these are the codes CROSSBEAM interprets on YOUR receiver.
+  expected_success: [200, 201]
+  retried_on: [408, 429, 500, 502, 503, 504]
+  after_retries_exhausted: >-
+    Fetch the missed message from the /v1/signals/* REST endpoints. Handlers must be idempotent
+    because a signal can be delivered more than once.
+  signature_failure: >-
+    Reject requests whose X-Crossbeam-Signature-256 HMAC does not verify, or whose
+    X-Crossbeam-Timestamp is older than 300 seconds.
+  source: https://developers.crossbeam.com/
+gaps:
+  - No error code registry or error reference page.
+  - No problem+json / RFC 9457 support.
+  - No 4xx/5xx example responses in the published Postman collection.
+  - No documented status code for the missing-organization-header failure, which is the most common one.
+checked: '2026-08-14'

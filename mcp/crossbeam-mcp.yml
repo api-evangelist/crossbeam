@@ -1,41 +1,84 @@
-generated: '2026-07-18'
+generated: '2026-08-14'
 method: searched
 status: published
 availability: limited-access
 source: https://help.crossbeam.com/en/articles/12601327-crossbeam-mcp-server-limited-availability
 docs:
-  - https://help.crossbeam.com/en/articles/12601327-crossbeam-mcp-server-limited-availability
-  - https://www.crossbeam.com/what-is-crossbeam/crossbeam-mcp
-  - https://claude.com/connectors/crossbeam
+- https://help.crossbeam.com/en/articles/12601327-crossbeam-mcp-server-limited-availability
+- https://www.crossbeam.com/what-is-crossbeam/crossbeam-mcp
+- https://claude.com/connectors/crossbeam
 server:
   name: crossbeam
   transport: http
   remote: true
-  access: >-
-    Remote hosted MCP server. Currently in Limited Availability for Supernode and Enterprise
-    plans, by approved domain. Request the server URL and access via a Crossbeam contact or
-    product@crossbeam.com. Native one-click connectors exist for Claude and ChatGPT; custom
-    agents connect via the provided server URL.
+  endpoint: https://mcp.crossbeam.com/mcp
+  access: Remote hosted MCP server. Currently in Limited Availability for Supernode and Enterprise plans,
+    by approved domain. Request access via a Crossbeam contact or product@crossbeam.com. Native
+    one-click connectors exist for Claude and ChatGPT; custom agents connect via the server URL.
   auth:
     type: oauth2
-    note: Connect through a Crossbeam OAuth authentication flow using your Crossbeam credentials.
+    note: >-
+      Verified live. The endpoint answers an unauthenticated POST with HTTP 401 and
+      'WWW-Authenticate: Bearer realm="mcp",
+      resource_metadata="https://mcp.crossbeam.com/.well-known/oauth-protected-resource"'
+      — RFC 9728 protected-resource discovery. The advertised authorization server is
+      mcp.crossbeam.com itself (authorize / oauth/token / register), with jwks_uri on
+      auth.crossbeam.com, so the MCP server rides the same identity plane as the REST API.
+    resource_metadata: https://mcp.crossbeam.com/.well-known/oauth-protected-resource
+    authorization_server: https://mcp.crossbeam.com/.well-known/oauth-authorization-server
+    dynamic_client_registration: true
+    pkce: [S256, plain]
+    scopes_supported: [openid, profile, email, offline_access]
+    artifacts:
+      - well-known/crossbeam-mcp-oauth-protected-resource.json
+      - well-known/crossbeam-mcp-oauth-authorization-server.json
   read_only: true
+tools_source: >-
+  Tool names and descriptions are taken from Crossbeam's own help-center article. The live
+  tools/list manifest is auth-gated (401), so per-tool inputSchema could not be read; schemas
+  require an authenticated introspection. Nothing below is inferred.
 tools:
-  - name: find_overlaps
-    description: Identify shared accounts with partners.
-  - name: get_account_context
-    description: Return unified account details and ownership.
-  - name: find_partner_recommendations
-    description: Rank partners for opportunities.
-  - name: find_overlap_partners
-    description: Show which partners share specific accounts.
-  - name: get_partner_context
-    description: Display partner relationships and performance metrics.
-  - name: get_ecosystem_activity
-    description: Surface recent partner activity with signal events.
-  - name: get_list_link
-    description: Generate shareable Crossbeam list links.
-  - name: search_crossbeam_knowledge
-    description: Answer product questions and ELG best practices.
-  - name: get_partner_suggestions
-    description: Recommend potential new partners.
+- name: find_overlaps
+  description: Identify shared accounts with partners.
+- name: get_account_context
+  description: Return unified account details and ownership.
+- name: find_partner_recommendations
+  description: Rank partners for opportunities.
+- name: find_overlap_partners
+  description: Show which partners share specific accounts.
+- name: get_partner_context
+  description: Display partner relationships and performance metrics.
+- name: get_ecosystem_activity
+  description: Surface recent partner activity with signal events.
+- name: get_list_link
+  description: Generate shareable Crossbeam list links.
+- name: search_crossbeam_knowledge
+  description: Answer product questions and ELG best practices.
+- name: get_partner_suggestions
+  description: Recommend potential new partners.
+deployment:
+  mode: remote
+  endpoint: https://mcp.crossbeam.com/mcp
+  auth: oauth
+  verified: probed
+  tools: 9
+  checked: '2026-08-14'
+  note: >-
+    Remote only — Crossbeam ships no stdio package and publishes no npx/pip install. The
+    endpoint host resolves to Crossbeam-operated infrastructure (k8s-mcp AWS ELB on
+    crossbeam.com) and its protected-resource document self-identifies as
+    resource_name "Crossbeam MCP", which is what establishes ownership.
+x-evidence:
+  fetched: '2026-08-14'
+  probes:
+    - url: https://mcp.crossbeam.com/mcp
+      method: POST
+      body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+      http_status: 401
+      www_authenticate: Bearer realm="mcp", resource_metadata="https://mcp.crossbeam.com/.well-known/oauth-protected-resource"
+    - url: https://mcp.crossbeam.com/.well-known/oauth-protected-resource
+      http_status: 200
+      content_type: application/json
+    - url: https://mcp.crossbeam.com/.well-known/oauth-authorization-server
+      http_status: 200
+      content_type: application/json
