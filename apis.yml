@@ -42,6 +42,17 @@ tags:
 - Data Collaboration
 - Sales Intelligence
 - CRM
+- Webhook
+- MCP
+tags_raw:
+- Company
+- Ecosystem-Led Growth
+- Partnerships
+- Account Mapping
+- Co-Selling
+- Data Collaboration
+- Sales Intelligence
+- CRM
 - Webhooks
 - MCP
 apis:
@@ -53,6 +64,11 @@ apis:
   humanURL: https://developers.crossbeam.com/
   baseURL: https://api.crossbeam.com
   tags:
+  - Partnerships
+  - Ecosystem Intelligence
+  - REST
+  - Authentication
+  tags_raw:
   - Partnerships
   - Ecosystem Intelligence
   - REST
