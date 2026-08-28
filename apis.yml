@@ -8,6 +8,17 @@ description: >-
   Intelligence" that flows into GTM tools and AI agents. Crossbeam exposes this data through a
   REST Partner API (OAuth 2.0), real-time Signals webhooks, a remote MCP server, and in-app AI
   Chat, backed by SOC 2 Type II, GDPR, CCPA, and PCI DSS compliance.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
