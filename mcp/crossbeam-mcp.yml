@@ -13,30 +13,33 @@ server:
   remote: true
   endpoint: https://mcp.crossbeam.com/mcp
   access: Remote hosted MCP server. Currently in Limited Availability for Supernode and Enterprise plans,
-    by approved domain. Request access via a Crossbeam contact or product@crossbeam.com. Native
-    one-click connectors exist for Claude and ChatGPT; custom agents connect via the server URL.
+    by approved domain. Request access via a Crossbeam contact or product@crossbeam.com. Native one-click
+    connectors exist for Claude and ChatGPT; custom agents connect via the server URL.
   auth:
     type: oauth2
-    note: >-
-      Verified live. The endpoint answers an unauthenticated POST with HTTP 401 and
-      'WWW-Authenticate: Bearer realm="mcp",
-      resource_metadata="https://mcp.crossbeam.com/.well-known/oauth-protected-resource"'
-      — RFC 9728 protected-resource discovery. The advertised authorization server is
-      mcp.crossbeam.com itself (authorize / oauth/token / register), with jwks_uri on
-      auth.crossbeam.com, so the MCP server rides the same identity plane as the REST API.
+    note: 'Verified live. The endpoint answers an unauthenticated POST with HTTP 401 and ''WWW-Authenticate:
+      Bearer realm="mcp", resource_metadata="https://mcp.crossbeam.com/.well-known/oauth-protected-resource"''
+      — RFC 9728 protected-resource discovery. The advertised authorization server is mcp.crossbeam.com
+      itself (authorize / oauth/token / register), with jwks_uri on auth.crossbeam.com, so the MCP server
+      rides the same identity plane as the REST API.'
     resource_metadata: https://mcp.crossbeam.com/.well-known/oauth-protected-resource
     authorization_server: https://mcp.crossbeam.com/.well-known/oauth-authorization-server
     dynamic_client_registration: true
-    pkce: [S256, plain]
-    scopes_supported: [openid, profile, email, offline_access]
+    pkce:
+    - S256
+    - plain
+    scopes_supported:
+    - openid
+    - profile
+    - email
+    - offline_access
     artifacts:
-      - well-known/crossbeam-mcp-oauth-protected-resource.json
-      - well-known/crossbeam-mcp-oauth-authorization-server.json
+    - well-known/crossbeam-mcp-oauth-protected-resource.json
+    - well-known/crossbeam-mcp-oauth-authorization-server.json
   read_only: true
-tools_source: >-
-  Tool names and descriptions are taken from Crossbeam's own help-center article. The live
-  tools/list manifest is auth-gated (401), so per-tool inputSchema could not be read; schemas
-  require an authenticated introspection. Nothing below is inferred.
+tools_source: Tool names and descriptions are taken from Crossbeam's own help-center article. The live
+  tools/list manifest is auth-gated (401), so per-tool inputSchema could not be read; schemas require
+  an authenticated introspection. Nothing below is inferred.
 tools:
 - name: find_overlaps
   description: Identify shared accounts with partners.
@@ -58,27 +61,21 @@ tools:
   description: Recommend potential new partners.
 deployment:
   mode: remote
-  endpoint: https://mcp.crossbeam.com/mcp
-  auth: oauth
-  verified: probed
+  verified: searched
   tools: 9
-  checked: '2026-08-14'
-  note: >-
-    Remote only — Crossbeam ships no stdio package and publishes no npx/pip install. The
-    endpoint host resolves to Crossbeam-operated infrastructure (k8s-mcp AWS ELB on
-    crossbeam.com) and its protected-resource document self-identifies as
-    resource_name "Crossbeam MCP", which is what establishes ownership.
+  checked: '2026-08-12'
+  source: catalog MCP census
 x-evidence:
   fetched: '2026-08-14'
   probes:
-    - url: https://mcp.crossbeam.com/mcp
-      method: POST
-      body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
-      http_status: 401
-      www_authenticate: Bearer realm="mcp", resource_metadata="https://mcp.crossbeam.com/.well-known/oauth-protected-resource"
-    - url: https://mcp.crossbeam.com/.well-known/oauth-protected-resource
-      http_status: 200
-      content_type: application/json
-    - url: https://mcp.crossbeam.com/.well-known/oauth-authorization-server
-      http_status: 200
-      content_type: application/json
+  - url: https://mcp.crossbeam.com/mcp
+    method: POST
+    body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+    http_status: 401
+    www_authenticate: Bearer realm="mcp", resource_metadata="https://mcp.crossbeam.com/.well-known/oauth-protected-resource"
+  - url: https://mcp.crossbeam.com/.well-known/oauth-protected-resource
+    http_status: 200
+    content_type: application/json
+  - url: https://mcp.crossbeam.com/.well-known/oauth-authorization-server
+    http_status: 200
+    content_type: application/json

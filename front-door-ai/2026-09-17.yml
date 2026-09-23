@@ -1,0 +1,34 @@
+# Front Door AI Index — crossbeam — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: crossbeam
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.crossbeam.com
+  final_host: www.crossbeam.com
+  ownership: own
+  owner: crossbeam
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 39
+  host_score: 39
+  density: 25.78
+  words: 1513
+  tiers:
+    agentic: 18
+    core: 11
+    model: 10
+  ambiguous: 11
+  top_terms:
+    MCP: 16
+    AI: 11
+    agent: 8
+    ChatGPT: 4
+    Claude: 4
+    intelligence: 3
+    GPT: 1
+    Gemini: 1
+    copilot: 1
+    prompts: 1
