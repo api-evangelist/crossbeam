@@ -101,3 +101,40 @@ quota_notes:
     toward the Record Export allowance, so integrations should filter server-side rather than
     poll. See rate-limits/crossbeam-rate-limits.yml.
 checked: '2026-08-14'
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - hybrid
+  - metered
+  units: []
+  plans:
+  - name: Free
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods:
+    - one-time
+  - name: Connector
+    access: other
+    model: hybrid
+    model_how: derived
+    units: []
+    periods:
+    - year
+  - name: Supernode
+    access: other
+    model: metered
+    model_how: derived
+    units: []
+    periods:
+    - year
+  - name: Enterprise
+    access: other
+    model: metered
+    model_how: derived
+    units: []
+    periods:
+    - year
