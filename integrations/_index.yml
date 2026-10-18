@@ -64,7 +64,7 @@
     - connectors/applications/crossbeam
     vendor_link: https://www.crossbeam.com/
     builder: Fivetran
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
 - slug: crossbeam-meltano
   label: Meltano
@@ -95,7 +95,7 @@
     - bronze
     - unknown
     builder: 'community (Meltano Hub variant maintainers: b-ryan, singer-io)'
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
 - slug: crossbeam-slack-own
   label: Slack (own)
