@@ -40,6 +40,32 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: crossbeam-slack-own
+  label: Slack (own)
+  partner: slack
+  partner_name: Slack (own)
+  category: Slack app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://slack.com/marketplace/AEA0LJ38E-crossbeam
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: crossbeam-zoom-own
+  label: Zoom (own)
+  partner: zoom
+  partner_name: Zoom (own)
+  category: Zoom app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.zoom.us/apps/Naa-bIUCSCagICaI-GfWvg
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: crossbeam-fivetran
   label: Fivetran
   partner: fivetran
@@ -97,29 +123,23 @@
     builder: 'community (Meltano Hub variant maintainers: b-ryan, singer-io)'
   status: not-a-workflow
   arazzo: null
-- slug: crossbeam-slack-own
-  label: Slack (own)
-  partner: slack
-  partner_name: Slack (own)
-  category: Slack app
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://slack.com/marketplace/AEA0LJ38E-crossbeam
+- slug: crossbeam-agent-skills-own-github-org
+  label: Agent Skills (own GitHub org)
+  partner_name: Agent Skills (own GitHub org)
+  category: Agent Skills package
+  type: register
+  channel: provider-built
+  evidence: https://github.com/getcrossbeam/crossbeam-claude-skills
   source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: crossbeam-zoom-own
-  label: Zoom (own)
-  partner: zoom
-  partner_name: Zoom (own)
-  category: Zoom app
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.zoom.us/apps/Naa-bIUCSCagICaI-GfWvg
-  source: edge
-  relationship: platform-app
+  relationship: compatible
+  contract_reference:
+    register: 'provider''s own GitHub org (GitHub REST API: repo + git tree holds SKILL.md)'
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-repo
+    matched_org: getcrossbeam
+    matched_by: org-profile-domain:crossbeam.com
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
   status: not-a-workflow
   arazzo: null
