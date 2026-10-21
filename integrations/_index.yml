@@ -27,45 +27,6 @@
   relationship: distribution-channel
   status: not-a-workflow
   arazzo: null
-- slug: crossbeam-okta-own
-  label: Okta (own)
-  partner: okta
-  partner_name: Okta (own)
-  category: Single Sign-On
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://www.okta.com/integrations/integrator-2764062_crossbeamxaa_1/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: crossbeam-slack-own
-  label: Slack (own)
-  partner: slack
-  partner_name: Slack (own)
-  category: Slack app
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://slack.com/marketplace/AEA0LJ38E-crossbeam
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: crossbeam-zoom-own
-  label: Zoom (own)
-  partner: zoom
-  partner_name: Zoom (own)
-  category: Zoom app
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.zoom.us/apps/Naa-bIUCSCagICaI-GfWvg
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: crossbeam-fivetran
   label: Fivetran
   partner: fivetran
@@ -141,5 +102,95 @@
     matched_by: org-profile-domain:crossbeam.com
     detected_by: sweep-agent-skills.py
     detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: crossbeam-salesforce-appexchange-security-review
+  label: Salesforce AppExchange Security Review
+  partner: salesforce
+  partner_name: Salesforce AppExchange Security Review
+  category: AppExchange security-reviewed publisher
+  type: register
+  channel: standard-directory
+  evidence: https://developer.salesforce.com/docs/atlas.en-us.packagingGuide.meta/packagingGuide/security_review_overview.htm
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Salesforce AppExchange public listings (listing JSON) under the AgentExchange Security Review requirement
+    standard: Salesforce AppExchange Security Review
+    spec_file: null
+    role: security-reviewed-publisher
+    registered_name: Crossbeam
+    register_country: null
+    matched_domain: crossbeam.com
+    matched_by: domain
+    identity_source: the listing's own publisher.website (no lookup)
+    certified_products:
+    - product: Salesforce package (security-reviewed)
+      product_type: force/package
+      certifier: Salesforce (AgentExchange / AppExchange Security Review)
+      listings: 1
+      example_listing: https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000FvKuqUAF
+      latest_approval: '2025-08-19'
+      lapsed: false
+      lapsed_note: the listing JSON prints solution.securityReview.approvalDate on a LIVE public listing; Salesforce
+        publishes no expiry, so no entry is marked lapsed (latest_approval is context)
+    signal_note: certified_products = ONE entry per product type (listing technology) with a printed securityReview.approvalDate,
+      never per listing or version; a listing with no approval date reads nothing; listing counts / versions are
+      context
+    requirement: https://developer.salesforce.com/docs/atlas.en-us.packagingGuide.meta/packagingGuide/security_review_overview.htm
+    detected_by: sweep-salesforce-appexchange.py
+    detected: '2026-10-21'
+  status: not-a-workflow
+  arazzo: null
+- slug: crossbeam-okta-own
+  label: Okta (own)
+  partner: okta
+  partner_name: Okta (own)
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.okta.com/integrations/integrator-2764062_crossbeamxaa_1/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: crossbeam-slack-own
+  label: Slack (own)
+  partner: slack
+  partner_name: Slack (own)
+  category: Slack app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://slack.com/marketplace/AEA0LJ38E-crossbeam
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: crossbeam-zoom-own
+  label: Zoom (own)
+  partner: zoom
+  partner_name: Zoom (own)
+  category: Zoom app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.zoom.us/apps/Naa-bIUCSCagICaI-GfWvg
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: crossbeam-salesforce-own
+  label: Salesforce (own)
+  partner: salesforce
+  partner_name: Salesforce (own)
+  category: partnerManagement
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000FvKuqUAF
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
