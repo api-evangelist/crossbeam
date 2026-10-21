@@ -31,6 +31,13 @@ checked:
 - https://developer.salesforce.com/docs/atlas.en-us.packagingGuide.meta/packagingGuide/security_review_overview.htm
 - https://slack.com/marketplace
 - salesforce/integrations/salesforce-integration-edges.yml
+- https://a16z.com/portfolio/
+- https://www.battery.com/company/
+- https://www.battery.com/wp-admin/admin-ajax.php
+- https://www.indexventures.com/companies/
+- https://www.sequoiacap.com/our-companies/
+- https://www.sequoiacap.com/sitemap.xml
+- hubspot/integrations/hubspot-integration-edges.yml
 summary: null
 marketplace_apps: []
 edges:
@@ -190,6 +197,35 @@ edges:
     detected: '2026-10-21'
   detected_by: sweep-salesforce-appexchange.py
   first_seen: '2026-10-21'
+- partner_name: Andreessen Horowitz (a16z)
+  partner: a16z
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://a16z.com/companies/crossbeam/
+  category: vc portfolio participation
+  contract_reference:
+    register: a16z portfolio (a16z.com/portfolio/, the page's own data-companies JSON)
+    standard: null
+    spec_file: null
+    role: vc-portfolio-company
+    registered_name: Crossbeam
+    register_id: https://a16z.com/companies/crossbeam/
+    register_country: null
+    register_website: https://crossbeam.com
+    matched_domain: crossbeam.com
+    matched_by: domain
+    signal_note: 'participation only: the venture firm''s own published portfolio lists the company (investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-vc-portfolios.py
+    detected: '2026-10-21'
+    year: '2021'
+    status: Active
+    sector: Enterprise;Growth
+  detected_by: sweep-vc-portfolios.py
+  first_seen: '2026-10-21'
 - partner_name: Okta (own)
   partner: okta
   partner_match: mirror
@@ -263,4 +299,22 @@ edges:
   detected: '2026-10-21'
   detected_by: mirror-platform-listings.py
   category: partnerManagement
+- partner_name: HubSpot (own)
+  partner: hubspot
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://ecosystem.hubspot.com/marketplace/listing/crossbeam-196819
+  mirror_of: hubspot/integrations/hubspot-integration-edges.yml
+  apps:
+  - Crossbeam
+  - Crossbeam Copilot
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: SALES_ENABLEMENT
 templates: []
