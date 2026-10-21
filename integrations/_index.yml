@@ -142,6 +142,36 @@
     detected: '2026-10-21'
   status: not-a-workflow
   arazzo: null
+- slug: crossbeam-andreessen-horowitz-a16z
+  label: Andreessen Horowitz (a16z)
+  partner: a16z
+  partner_name: Andreessen Horowitz (a16z)
+  category: vc portfolio participation
+  type: register
+  channel: standard-directory
+  evidence: https://a16z.com/companies/crossbeam/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: a16z portfolio (a16z.com/portfolio/, the page's own data-companies JSON)
+    standard: null
+    spec_file: null
+    role: vc-portfolio-company
+    registered_name: Crossbeam
+    register_id: https://a16z.com/companies/crossbeam/
+    register_country: null
+    register_website: https://crossbeam.com
+    matched_domain: crossbeam.com
+    matched_by: domain
+    signal_note: 'participation only: the venture firm''s own published portfolio lists the company (investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-vc-portfolios.py
+    detected: '2026-10-21'
+    year: '2021'
+    status: Active
+    sector: Enterprise;Growth
+  status: not-a-workflow
+  arazzo: null
 - slug: crossbeam-okta-own
   label: Okta (own)
   partner: okta
@@ -194,33 +224,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: crossbeam-andreessen-horowitz-a16z
-  label: Andreessen Horowitz (a16z)
-  partner: a16z
-  partner_name: Andreessen Horowitz (a16z)
-  category: vc portfolio participation
-  type: register
-  channel: standard-directory
-  evidence: https://a16z.com/companies/crossbeam/
+- slug: crossbeam-hubspot-own
+  label: HubSpot (own)
+  partner: hubspot
+  partner_name: HubSpot (own)
+  category: SALES_ENABLEMENT
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://ecosystem.hubspot.com/marketplace/listing/crossbeam-196819
   source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: a16z portfolio (a16z.com/portfolio/, the page's own data-companies JSON)
-    standard: null
-    spec_file: null
-    role: vc-portfolio-company
-    registered_name: Crossbeam
-    register_id: https://a16z.com/companies/crossbeam/
-    register_country: null
-    register_website: https://crossbeam.com
-    matched_domain: crossbeam.com
-    matched_by: domain
-    signal_note: 'participation only: the venture firm''s own published portfolio lists the company (investment);
-      an ownership and participation record, not conformance or certification'
-    detected_by: sweep-vc-portfolios.py
-    detected: '2026-10-21'
-    year: '2021'
-    status: Active
-    sector: Enterprise;Growth
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
